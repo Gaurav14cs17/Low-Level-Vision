@@ -78,6 +78,7 @@ def write_image(image, path, overwrite = True):
   return True
 
 
+#---------------------------------------------------------------------------------------------------#
 
 
 def _center_transform(t, height, width):
