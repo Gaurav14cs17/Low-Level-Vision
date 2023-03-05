@@ -87,10 +87,6 @@ class UNet_model(tf.keras.Model):
         output_layer = self.output_layer(previous_output)
         return output_layer
 
-    def model_summry(self):
-        model.build(input_shape=(None, 224, 224, 3))
-        model.summary()
-
 
 
 
@@ -99,9 +95,11 @@ if __name__ == '__main__':
     input_layer = tf.keras.Input(shape=input_shape, name='input')
     print(input_layer.shape)
     model  = UNet_model()
-    model.model_summry()
+    model.build(input_shape=(None, 224, 224, 3))
+    model.summary()
     output = model(input_layer)
     print(output.shape)
+
 
 
 '''
