@@ -89,3 +89,11 @@ def get_flare_dataset(path,source,batch_size,input_shape = (752, 1008, 3),repeat
 
   else:
     raise ValueError('Unrecognized data source', source)
+
+
+'''
+
+
+ --scene_dir=/path/to/flare-free/
+  --flare_dir=/path/to/flare-only/
+'''
