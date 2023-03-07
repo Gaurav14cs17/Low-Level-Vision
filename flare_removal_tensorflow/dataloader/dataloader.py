@@ -12,6 +12,7 @@ class DataGenerator(tf.keras.utils.Sequence):
         self.input_shape=(640, 640, 3)
         self.batch_size = 3
         self.images_dir_list = self.get_images_name()
+        self.on_epoch_end()
 
     def get_images_name(self):
         return os.listdir(os.path.join(self.dir_path , "GT"))
@@ -66,6 +67,9 @@ class DataGenerator(tf.keras.utils.Sequence):
 
     def __len__(self):
         return int(len(self.images_dir_list)/float(self.batch_size))
+
+    def on_epoch_end(self):
+        pass
 
 
 
