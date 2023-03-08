@@ -58,12 +58,11 @@ class DataGenerator(tf.keras.utils.Sequence):
             in_full_path = os.path.join(self.dir_path , "IN" , in_name)
             in_image = self.load_images(in_full_path)
             gt_image = self.load_images(gt_full_path)
-
             GT_image , IN_image = self.get_patch(gt_image , in_image , num_patches=4 , patch_size=256 , gt_filter=3 , in_filter=3)
             for x , y in zip(IN_image , GT_image):
                 IN_images.append(x)
-                IN_images.append(y)
-        return IN_images, IN_images
+                GT_images.append(y)
+        return IN_images, GT_images
 
     def __len__(self):
         return int(len(self.images_dir_list)/float(self.batch_size))
