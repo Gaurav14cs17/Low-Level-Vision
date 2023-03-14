@@ -117,8 +117,7 @@ class Flare_Image_Loader(data.Dataset):
         merge_img = torch.clamp(merge_img, min=0, max=1)
 
         if self.mask_type == None:
-            return adjust_gamma_reverse(base_img), adjust_gamma_reverse(flare_img), adjust_gamma_reverse(
-                merge_img), gamma
+            return adjust_gamma_reverse(base_img), adjust_gamma_reverse(flare_img), adjust_gamma_reverse(merge_img), gamma
         elif self.mask_type == "luminance":
             # calculate mask (the mask is 3 channel)
             one = torch.ones_like(base_img)
@@ -133,8 +132,7 @@ class Flare_Image_Loader(data.Dataset):
             threshold_value = 0.99 ** gamma
             flare_mask = torch.where(merge_img > threshold_value, one, zero)
 
-        return adjust_gamma_reverse(base_img), adjust_gamma_reverse(flare_img), adjust_gamma_reverse(
-            merge_img), flare_mask, gamma
+        return adjust_gamma_reverse(base_img), adjust_gamma_reverse(flare_img), adjust_gamma_reverse(merge_img), flare_mask, gamma
 
     def __len__(self):
         return len(self.data_list)

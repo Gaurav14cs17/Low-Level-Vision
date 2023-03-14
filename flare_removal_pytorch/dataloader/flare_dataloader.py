@@ -174,16 +174,19 @@ if __name__ == '__main__':
 
     for img_index in range(len(flare_image_loader)):
         test_base_img, test_flare_img, test_merge_img, flare_mask_img , gamma = flare_image_loader[img_index]
+        pred_flare = remove_flare(test_merge_img, test_base_img, gamma)
         test_base_img_path = os.path.join(output_path, "GT", str(img_index) + "_test_base_img"+ ".png")
         test_flare_img_path = os.path.join(output_path, "GT", str(img_index) + "_test_flare_img" + ".png")
         test_merge_img_path = os.path.join(output_path, "GT", str(img_index) + "_test_merge_img" + ".png")
         flare_mask_img_path = os.path.join(output_path, "GT", str(img_index) + "_flare_mask_img" + ".png")
+        pred_flare_img_path = os.path.join(output_path, "GT", str(img_index) + "_pred_flare" + ".png")
 
         plt.imsave(test_base_img_path, test_base_img.permute(1, 2, 0).cpu().numpy())
         plt.imsave(test_flare_img_path, test_flare_img.permute(1, 2, 0).cpu().numpy())
         plt.imsave(test_merge_img_path, test_merge_img.permute(1, 2, 0).cpu().numpy())
         plt.imsave(flare_mask_img_path, flare_mask_img.permute(1, 2, 0).cpu().numpy())
+        plt.imsave(pred_flare_img_path, pred_flare.permute(1, 2, 0).cpu().numpy())
         print("done: ", img_index)
-        if img_index >22:
+        if img_index >4:
             break
 
