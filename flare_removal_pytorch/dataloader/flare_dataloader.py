@@ -14,9 +14,21 @@ import torch
 
 
 class Flare_dataloader(data.Dataset):
-    def __init__(self, transform_base, transform_flare):
+    def __init__(self, image_path, transform_base=None, transform_flare=None, mask_type=None):
+        self.ext = ['png', 'jpeg', 'jpg', 'bmp', 'tif']
+        self.data_list = []
+        [self.data_list.extend(glob.glob(image_path + '/*.' + e)) for e in self.ext]
+        self.flare_dict = {}
+        self.flare_list = []
+        self.flare_name_list = []
+        self.reflective_flag = False
+        self.reflective_dict = {}
+        self.reflective_list = []
+        self.reflective_name_list = []
+        self.mask_type = mask_type  # It is a str which may be None,"luminance" or "color"
         self.transform_base = transform_base
         self.transform_flare = transform_flare
+        print("Base Image Loaded with examples:", len(self.data_list))
 
     def image_processing_method(self):
         self.random_gamma = np.random.uniform(1.8, 2.2)
@@ -33,7 +45,12 @@ class Flare_dataloader(data.Dataset):
         base_image_path = self.data_list[item]
         self.image_processing_method()
         base_img = self.load_base_images(base_image_path)
-        flare_img = self.load_flare_images()
+
+        reflective_img_path = None
+        flare_image_path = random.choice(self.flare_list)
+        if self.reflective_flag:
+            reflective_img_path = random.choice(self.reflective_list)
+        flare_img = self.load_flare_images(flare_image_path , reflective_img_path)
         merge_img = flare_img + base_img
         merge_img = torch.clamp(merge_img, min=0, max=1)
 
@@ -49,10 +66,10 @@ class Flare_dataloader(data.Dataset):
         elif self.mask_type == "color":
             one = torch.ones_like(base_img)
             zero = torch.zeros_like(base_img)
-            threshold_value = 0.99 ** self.gamma
+            threshold_value = 0.99 ** self.random_gamma
             flare_mask = torch.where(merge_img > threshold_value, one, zero)
 
-        return self.adjust_gamma_reverse(base_img), self.adjust_gamma_reverse(flare_img), self.adjust_gamma_reverse(merge_img), flare_mask, self.gamma
+        return self.adjust_gamma_reverse(base_img), self.adjust_gamma_reverse(flare_img), self.adjust_gamma_reverse(merge_img), flare_mask, self.random_gamma
 
     def save_image(self, in_path, image):
         self.output_dir_path = "./output/"
@@ -73,11 +90,21 @@ class Flare_dataloader(data.Dataset):
         base_image_tensor = torch.clamp(base_image_tensor, min=0, max=1)
         return base_image_tensor
 
-    def load_flare_images(self, flare_image_path):
+    def load_flare_images(self, flare_image_path , reflective_img_path = None):
         flare_image = Image.open(flare_image_path)
         flare_img_tensor = self.to_tensor(flare_image)
         flare_img_tensor = self.adjust_gamma(flare_img_tensor)
+
+        if self.reflective_flag:
+            print(self.reflective_flag)
+            reflective_img = Image.open(reflective_img_path)
+            reflective_img = self.to_tensor(reflective_img)
+            reflective_img = self.adjust_gamma(reflective_img)
+            flare_img_tensor = torch.clamp(flare_img_tensor + reflective_img, min=0, max=1)
+
         flare_img_tensor = remove_background(flare_img_tensor)
+        if self.transform_flare is not None:
+            flare_img_tensor = self.transform_flare(flare_img_tensor)
         # change_color
         flare_image = self.color_jitter(flare_img_tensor)
         flare_image = self.gaussian_blur_transform(flare_image)
@@ -89,12 +116,14 @@ class Flare_dataloader(data.Dataset):
         return len(self.data_list)
 
     def load_scattering_flare(self, flare_name, flare_path):
-        flare_list = []
-        [flare_list.extend(glob.glob(flare_path + '/*.' + e)) for e in self.ext]
         self.flare_name_list.append(flare_name)
-        self.flare_dict[flare_name] = flare_list
-        self.flare_list.extend(flare_list)
-        len_flare_list = len(self.flare_dict[flare_name])
+        for file_name in os.listdir(flare_path):
+            dir_path = os.path.join(flare_path , file_name)
+            flare_list = []
+            [flare_list.extend(glob.glob(dir_path + '/*.' + e)) for e in self.ext]
+            self.flare_dict[file_name] = flare_list
+            self.flare_list.extend(flare_list)
+        len_flare_list = len(self.flare_list)
         if len_flare_list == 0:
             print("ERROR: scattering flare images are not loaded properly")
         else:
@@ -118,9 +147,8 @@ class Flare_dataloader(data.Dataset):
 
 if __name__ == '__main__':
     import os
-
-    data_path = "D:/labs/LOW_LEVEL_IMAGEING/Low-Level-Vision/data/Flare7K_dataset/"
-    output_path = "D:/labs/LOW_LEVEL_IMAGEING/Low-Level-Vision/data/Flare7K_dataset/train/"
+    data_path = "D:/labs/LOW_LEVEL_IMAGEING/data/Flare7K_dataset/"
+    output_path = "D:/labs/LOW_LEVEL_IMAGEING/data/output/"
     from matplotlib import pyplot as plt
 
     transform_base = transforms.Compose([transforms.RandomCrop((512, 512), pad_if_needed=True, padding_mode='reflect'),
@@ -135,21 +163,27 @@ if __name__ == '__main__':
                                           transforms.RandomVerticalFlip()
                                           ])
 
-    flare_image_loader = Flare_dataloader(transform_base, transform_flare)
-    base_image_path = "D:/labs/LOW_LEVEL_IMAGEING/data/Flare7K_dataset/Flickr24K/11.jpg"
-    flare_image_path = "D:/labs/LOW_LEVEL_IMAGEING/data/Flare7K_dataset/Flare7k/Scattering_Flare/Compound_Flare/img_000313.png"
-    flare_image_loader.__getitem__(0)
-    flare_image_loader.load_flare_images(flare_image_path)
-    flare_image_loader.load_base_images(base_image_path)
-    # flare_image_loader.load_scattering_flare('Flare7K', data_path + 'Flare7k/Scattering_Flare/Compound_Flare')
-    # flare_image_loader.load_reflective_flare('Flare7K', data_path + 'Flare7k/Reflective_Flare')
-    #
-    # print(len(flare_image_loader))
-    # for img_index in range(len(flare_image_loader)):
-    #     test_base_img, test_flare_img, test_merge_img, flare_mask = flare_image_loader[img_index]
-    #     gt_path = os.path.join(output_path, "GT", "GT_" + str(img_index) + ".png")
-    #     in_path = os.path.join(output_path, "IN", "IN_" + str(img_index) + ".png")
-    #     plt.imsave(in_path, test_merge_img.permute(1, 2, 0).cpu().numpy())
-    #     plt.imsave(gt_path, test_base_img.permute(1, 2, 0).cpu().numpy())
-    #     print("done: ", img_index)
-    #     break
+    flare_image_loader = Flare_dataloader(data_path + 'Flickr24K', transform_base, transform_flare , "luminance")
+    flare_image_loader.load_scattering_flare('Flare7K', "D:/labs/LOW_LEVEL_IMAGEING/data/Flare_Removal_DataSet/lens-flare/")
+    #flare_image_loader.load_reflective_flare('Flare7K', data_path + 'Flare7k/Reflective_Flare')
+
+    print(len(flare_image_loader))
+    if not os.path.exists(os.path.join(output_path, "GT")):
+        os.makedirs(os.path.join(output_path, "GT"))
+        os.makedirs(os.path.join(output_path, "IN"))
+
+    for img_index in range(len(flare_image_loader)):
+        test_base_img, test_flare_img, test_merge_img, flare_mask_img , gamma = flare_image_loader[img_index]
+        test_base_img_path = os.path.join(output_path, "GT", str(img_index) + "_test_base_img"+ ".png")
+        test_flare_img_path = os.path.join(output_path, "GT", str(img_index) + "_test_flare_img" + ".png")
+        test_merge_img_path = os.path.join(output_path, "GT", str(img_index) + "_test_merge_img" + ".png")
+        flare_mask_img_path = os.path.join(output_path, "GT", str(img_index) + "_flare_mask_img" + ".png")
+
+        plt.imsave(test_base_img_path, test_base_img.permute(1, 2, 0).cpu().numpy())
+        plt.imsave(test_flare_img_path, test_flare_img.permute(1, 2, 0).cpu().numpy())
+        plt.imsave(test_merge_img_path, test_merge_img.permute(1, 2, 0).cpu().numpy())
+        plt.imsave(flare_mask_img_path, flare_mask_img.permute(1, 2, 0).cpu().numpy())
+        print("done: ", img_index)
+        if img_index >22:
+            break
+
