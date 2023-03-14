@@ -3,7 +3,7 @@ import tensorflow as tf
 from .utils import *
 
 
-def add_flare(scene,flare,noise,flare_max_gain = 10.0,apply_affine = True,training_res = 512):
+def add_flare(scene,flare,noise,flare_max_gain = 10.0,apply_affine = False,training_res = 512):
   """Adds flare to natural images.
   Here the natural images are in sRGB. They are first linearized before flare
   patterns are added. The result is then converted back to sRGB.
@@ -21,8 +21,8 @@ def add_flare(scene,flare,noise,flare_max_gain = 10.0,apply_affine = True,traini
     shift = tf.random.normal([batch_size, 2], mean=0.0, stddev=10.0)
     shear = tf.random.uniform([batch_size, 2],minval=-math.pi / 9,maxval=math.pi / 9)
     scale = tf.random.uniform([batch_size, 2], minval=0.9, maxval=1.2)
-    flare_linear = apply_affine_transform(flare_linear,rotation=rotation,shift_x=shift[:, 0],
-        shift_y=shift[:, 1],shear_x=shear[:, 0],shear_y=shear[:, 1],scale_x=scale[:, 0],scale_y=scale[:, 1])
+    flare_linear = apply_affine_transform(flare_linear,rotation=rotation,shift_x=shift[:, 0],shift_y=shift[:, 1],shear_x=shear[:, 0],shear_y=shear[:, 1],scale_x=scale[:, 0],scale_y=scale[:, 1])
+
   flare_linear = tf.clip_by_value(flare_linear, 0.0, 1.0)
   flare_linear = tf.image.crop_to_bounding_box(flare_linear,offset_height=(flare_input_height - training_res) // 2,offset_width=(flare_input_width - training_res) // 2,
                     target_height=training_res,target_width=training_res)
@@ -67,16 +67,23 @@ def add_flare(scene,flare,noise,flare_max_gain = 10.0,apply_affine = True,traini
 
 def run_step(scene,flare,model,loss_fn,noise = 0.0,flare_max_gain = 10.0,flare_loss_weight = 0.0,training_res = 512):
   """Executes a forward step."""
-  scene, flare, combined, gamma = add_flare(scene,flare,flare_max_gain=flare_max_gain,noise=noise,training_res=training_res)
-  pred_scene = model(combined)
-  pred_flare = remove_flare(combined, pred_scene, gamma)
+  #scene, flare, combined, gamma = add_flare(scene,flare,flare_max_gain=flare_max_gain,noise=noise,training_res=training_res)
+  pred_scene = model(flare)
+  pred_flare = remove_flare(scene, pred_scene)
   flare_mask = get_highlight_mask(flare)
+
+  print(scene , flare)
+
+  #write_image(pred_scene[0], "./output/scene_1.png")
+  #write_image(pred_flare[0], "./output/flare_1.png")
+  #write_image(flare_mask[0], "./output/flare_mask.png")
   # Fill the saturation region with the ground truth, so that no L1/L2 loss
   # and better for perceptual loss since it matches the surrounding scenes.
   masked_scene = pred_scene * (1 - flare_mask) + scene * flare_mask
+  write_image(scene[0], "./output/masked_scene.png")
   loss_value = loss_fn(scene, masked_scene)
   if flare_loss_weight > 0:
     masked_flare = pred_flare * (1 - flare_mask) + flare * flare_mask
     loss_value += flare_loss_weight * loss_fn(flare, masked_flare)
-  image_summary = tf.concat([combined, pred_scene, scene, pred_flare, flare],axis=2)
+  image_summary = tf.concat([pred_scene, scene, pred_flare, flare],axis=2)
   return loss_value, image_summary

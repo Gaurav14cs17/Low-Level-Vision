@@ -97,9 +97,9 @@ class _CanBlock(tf.keras.layers.Layer):
 
 
 class Vgg_model(tf.keras.Model):
-    def __init__(self , conv_channels=64,out_channels=3,name='can'):
+    def __init__(self  , conv_channels=64,out_channels=3,name='can'):
         super(Vgg_model, self).__init__()
-        self.vgg = Vgg19(tap_out_layers=[f'block{i}_conv2' for i in range(1, 6)], trainable=False)
+        self.vgg = Vgg19( tap_out_layers=[f'block{i}_conv2' for i in range(1, 6)], trainable=False)
         self.CanBlock_layer = _CanBlock(conv_channels, size=1, rate=1, name=f'{name}_g_conv0')
 
         self.CanBlock_layer_list = []
@@ -110,8 +110,10 @@ class Vgg_model(tf.keras.Model):
 
     def call(self , input_layer ):
         features = self.vgg(input_layer)
+        print(features)
         features = [tf.image.resize(f, input_layer.shape[1:3]) / 255.0 for f in features]
         x = tf.concat([input_layer] + features, axis=-1)
+        print(x)
         x = self.CanBlock_layer(x)
         for _CanBlock  in self.CanBlock_layer_list :
             x = _CanBlock(x)
@@ -128,8 +130,8 @@ if __name__ == '__main__':
     input_layer = tf.keras.Input(shape=input_shape, name='input')
     print(input_layer.shape)
     model  = Vgg_model()
-    model.build(input_shape=(None, 224, 224, 3))
-    model.summary()
+    # model.build(input_shape=(None, 224, 224, 3))
+    # model.summary()
 
     output = model(input_layer)
     print(output.shape)

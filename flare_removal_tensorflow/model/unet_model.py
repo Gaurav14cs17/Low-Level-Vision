@@ -50,7 +50,7 @@ class up_block(tf.keras.Model):
 
 
 class UNet_model(tf.keras.Model):
-    def __init__(self, input_shape  =3  , scales=4, bottleneck_depth=1024, number_bottleneck_layers=2):
+    def __init__(self, input_shape  =3  , scales=4, bottleneck_depth=512, number_bottleneck_layers=2):
         super(UNet_model, self).__init__()
         depths = [bottleneck_depth // 2 ** i for i in range(scales, 0, -1)]
         self.down_layers = []

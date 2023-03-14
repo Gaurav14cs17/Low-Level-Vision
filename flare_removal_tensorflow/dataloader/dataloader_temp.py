@@ -1,6 +1,10 @@
 import os.path
 from typing import Iterable, Tuple, Union
 import tensorflow as tf
+from synthesis import *
+from utils import *
+from random import shuffle
+import random
 
 _SHUFFLE_BUFFER_SIZE = 10_000
 
@@ -22,7 +26,7 @@ class DataGenerator():
         image = tf.io.decode_image(path, dtype=tf.float32)
         # image.set_shape(self.input_shape)
         image = tf.cast(image, dtype=tf.float32)
-        image = image / (2 ** self.bit_depth - 1)
+        #image = image / (2 ** self.bit_depth - 1)
         image = tf.expand_dims(image, 0)
         return image
 
@@ -56,7 +60,11 @@ class DataGenerator():
     def get_data(self):
         IN_images_list = []
         GT_images_list = []
-        for image_name in self.images_dir_list:
+        print(self.images_dir_list)
+        indx = random.randrange(0,len(self.images_dir_list))
+        image_name_list = [self.images_dir_list[indx]]
+        print(indx)
+        for image_name in image_name_list:
             gt_name = "GT_" + image_name.split('_')[-1]
             in_name = "IN_" + image_name.split('_')[-1]
             gt_full_path = os.path.join(self.dir_path, "GT", gt_name)
@@ -67,14 +75,12 @@ class DataGenerator():
         dataset_gt = tf.data.Dataset.from_tensor_slices(GT_images_list)
         dataset_in = tf.data.Dataset.from_tensor_slices(IN_images_list)
         dataset = tf.data.Dataset.zip((dataset_in, dataset_gt))
-        dataset = dataset.map(
-            lambda path_in_image, path_gt_image: self.get_in_and_gt_image(path_in_image, path_gt_image),
-            num_parallel_calls=tf.data.experimental.AUTOTUNE)
-        dataset = dataset.map(lambda IN_image, GT_image: self.get_patch(IN_image, GT_image, num_patches=4, patch_size=256, gt_filter=3,in_filter=3) ,  num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        dataset = dataset.map(lambda path_in_image, path_gt_image: self.get_in_and_gt_image(path_in_image, path_gt_image), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        #dataset = dataset.map(lambda IN_image, GT_image: self.get_patch(IN_image, GT_image, num_patches=4, patch_size=256, gt_filter=3,in_filter=3) ,  num_parallel_calls=tf.data.experimental.AUTOTUNE)
         dataset = dataset.unbatch()
-        dataset = dataset.map(lambda x : tf.cast( x , dtype=tf.float32) , num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        #dataset = dataset.map(lambda x : tf.cast( x , dtype=tf.float32) , num_parallel_calls=tf.data.experimental.AUTOTUNE)
         dataset = dataset.batch(self.batch_size , drop_remainder=True)
-        dataset = dataset.map(lambda y : self.split_in_and_gt_images(y) , num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        #dataset = dataset.map(lambda y : self.split_in_and_gt_images(y) , num_parallel_calls=tf.data.experimental.AUTOTUNE)
         print(dataset)
         dataset = dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
         return dataset
@@ -89,7 +95,25 @@ class DataGenerator():
 
 if __name__ == '__main__':
     gen = DataGenerator(dir_path="D:/labs/LOW_LEVEL_IMAGEING/data/Flare7K_dataset/train/")
-    gen.get_data()
+    dataset = gen.get_data()
+    for flare, scene in dataset:
+        #scene, flare, combined, gamma = add_flare(scene, flare, flare_max_gain=10.0, noise=0.01, training_res=512)
+
+        print(scene)
+
+        write_image(scene[0], "./output/scene.png")
+        write_image(flare[0], "./output/flare.png")
+
+
+        pred_flare = remove_flare(flare, scene)
+        flare_mask = get_highlight_mask(flare)
+
+        print(flare_mask.shape)
+
+        write_image(pred_flare[0], "./output/pred_flare.png")
+        write_image(flare_mask[0], "./output/flare_mask.png")
+        break
+
 
 
 

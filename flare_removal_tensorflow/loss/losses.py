@@ -1,20 +1,22 @@
 from typing import Callable, Dict, Mapping, Optional, Union
 import tensorflow as tf
-from .perceptual_loss import Vgg_model
+from .perceptual_loss import Vgg19
 
 
 class PerceptualLoss(tf.keras.losses.Loss):
   DEFAULT_COEFFS = {'block1_conv2': 1 / 2.6,'block2_conv2': 1 / 4.8,'block3_conv2': 1 / 3.7,'block4_conv2': 1 / 5.6,'block5_conv2': 10 / 1.5,}
   def __init__(self,coeffs = None,name = 'perceptual'):
     super(PerceptualLoss, self).__init__(name=name)
-    coeffs = coeffs or self.DEFAULT_COEFFS
+    coeffs =  self.DEFAULT_COEFFS
     layers, self._coeffs = zip(*coeffs.items())
-    self._model = Vgg_model(tap_out_layers=layers)
+    self._model = Vgg19(tap_out_layers=layers)
 
   def call(self, y_true, y_pred):
     true_features = self._model(y_true)
     pred_features = self._model(y_pred)
     total_loss = tf.constant(0.0)
+    print(self._coeffs)
+    print(true_features)
     for ft, fp, coeff in zip(true_features, pred_features, self._coeffs):
       loss = tf.keras.losses.MAE(ft, fp)
       loss = tf.reduce_mean(loss, axis=[1, 2], keepdims=True)

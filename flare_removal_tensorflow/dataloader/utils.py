@@ -176,7 +176,7 @@ def apply_affine_transform(image,rotation = 0.,shift_x = 0.,shift_y = 0.,shear_x
   return transformed
 
 
-def get_highlight_mask(im,threshold = 0.99,dtype = tf.float32):
+def get_highlight_mask(im,threshold = 0.90,dtype = tf.float32):
   """Returns a binary mask indicating the saturated regions in the input image.
   """
   binary_mask = tf.reduce_mean(im, axis=-1, keepdims=True) > threshold
