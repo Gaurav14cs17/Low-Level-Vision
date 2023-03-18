@@ -47,12 +47,14 @@ def remove_flare( combined, flare, gamma = 2.2):
     combined_image = torch.clip(combined , _EPS , 1.0)
     flare_image = torch.clip(flare , _EPS ,1.0)
     #--------------------------------------------
-    combined_linear_image = torch.pow(combined_image , gamma)
-    flare_linear_image = torch.pow(flare_image , gamma)
+    gamma_object = RandomGammaCorrection(gamma)
+    adjust_gamma_reverse = RandomGammaCorrection(1.0/gamma)
+    combined_linear_image = gamma_object(combined_image) #torch.pow(combined_image , gamma)
+    flare_linear_image = gamma_object(flare_image) #torch.pow(flare_image , gamma)
     #---------------------------------------------
     scene_linear_image = combined_linear_image - flare_linear_image
     scene_linear_image = torch.clip(scene_linear_image , _EPS,1.0)
-    scene_linear_image = torch.pow(scene_linear_image , 1.0/gamma)
+    scene_linear_image = adjust_gamma_reverse(scene_linear_image )
     return scene_linear_image
 
 
@@ -123,12 +125,12 @@ class RandomGammaCorrection(object):
         self.gamma = gamma
 
     def __call__(self, image):
-        if self.gamma == None:
+        if not isinstance(self.gamma, list):
             # more chances of selecting 0 (original image)
             gammas = [0.5, 1, 2]
             self.gamma = random.choice(gammas)
             return TF.adjust_gamma(image, self.gamma, gain=1)
-        elif isinstance(self.gamma, tuple):
+        elif isinstance(self.gamma, list):
             gamma = random.uniform(*self.gamma)
             return TF.adjust_gamma(image, gamma, gain=1)
         elif self.gamma == 0:

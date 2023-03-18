@@ -3,6 +3,7 @@ from math import sqrt
 import torch
 
 
+
 class DnCNN(nn.Module):
     def __init__(self, channels, num_of_layers=17):
         super(DnCNN, self).__init__()
@@ -44,7 +45,7 @@ class GlobalMaxPool(torch.nn.Module):
 
 
 class CA(nn.Module):
-    def __init__(self, channel, reduction=16):
+    def __init__(self, channel, reduction=1):
         super(CA, self).__init__()
         # global average pooling: feature --> point
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
@@ -119,7 +120,7 @@ class AB(nn.Module):
         self.up1 = self.make_layer(_up, features * 4, 1)
         self.DCR_block11 = self.make_layer(RB, features * 2, num)
         self.conv_f = nn.Conv2d(in_channels=features * 2, out_channels=features, kernel_size=1, stride=1, padding=0)
-        self.relu2 = nn.PReLU()
+        self.relu2 = nn.Sigmoid()
 
     def make_layer(self, block, channel_in, num):
         layers = []
