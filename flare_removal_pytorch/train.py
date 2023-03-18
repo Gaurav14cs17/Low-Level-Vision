@@ -34,9 +34,9 @@ import torch
 import os
 import json
 from terminaltables import AsciiTable
-from lib.scheduler import CosineAnnealingWarmupRestarts
-from lib.logger import *
-from lib.options import TrainOptions
+from utils.scheduler import CosineAnnealingWarmupRestarts
+from utils.logger import *
+from utils.options import TrainOptions
 
 
 def weights_init_normal(m):
@@ -95,11 +95,11 @@ class Train:
     def log(self, total_loss, epoch, global_step, total_step, start_time):
         log = "\n---- [Epoch %d/%d] ----\n" % (epoch + 1, self.args.epochs)
         tensorboard_log = {}
-        loss_table_name = ["Step: %d/%d" % (global_step, total_step), "loss", "reg_loss", "conf_loss", "cls_loss"]
-        loss_table = [loss_table_name]
+        #loss_table_name = ["Step: %d/%d" % (global_step, total_step), "loss", "reg_loss", "conf_loss", "cls_loss"]
+        #loss_table = [loss_table_name]
         tensorboard_log["total_loss"] = total_loss
         self.logger.list_of_scalars_summary(tensorboard_log, global_step)
-        log += AsciiTable(loss_table).table
+        #log += AsciiTable(loss_table).table
         log += "\nTotal Loss: %f, Runtime: %f\n" % (total_loss, time.time() - start_time)
         print(log)
 
@@ -140,10 +140,6 @@ class Train:
             for i, (base_img, flare_img, merge_img, flare_mask_img , gamma) in enumerate(train_dataloader):
                 global_step = num_iters_per_epoch * epoch + self.args.batch_size + 1
                 merge_img = merge_img.to(self.device)
-
-
-
-
                 #-----------------------------------
                 flare_img = flare_img.to(self.device)
                 base_img = base_img.to(self.device)
