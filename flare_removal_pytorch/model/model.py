@@ -10,13 +10,17 @@ class DnCNN(nn.Module):
         padding = 1
         features = 64
         layers = []
-        layers.append(nn.Conv2d(in_channels=channels, out_channels=features, kernel_size=kernel_size, padding=padding, bias=False))
+        layers.append(nn.Conv2d(in_channels=channels, out_channels=features, kernel_size=kernel_size, padding=padding,
+                                bias=False))
         layers.append(nn.ReLU(inplace=True))
-        for _ in range(num_of_layers-2):
-            layers.append(nn.Conv2d(in_channels=features, out_channels=features, kernel_size=kernel_size, padding=padding, bias=False))
+        for _ in range(num_of_layers - 2):
+            layers.append(
+                nn.Conv2d(in_channels=features, out_channels=features, kernel_size=kernel_size, padding=padding,
+                          bias=False))
             layers.append(nn.BatchNorm2d(features))
             layers.append(nn.ReLU(inplace=True))
-        layers.append(nn.Conv2d(in_channels=features, out_channels=channels, kernel_size=kernel_size, padding=padding, bias=False))
+        layers.append(nn.Conv2d(in_channels=features, out_channels=channels, kernel_size=kernel_size, padding=padding,
+                                bias=False))
         self.dncnn = nn.Sequential(*layers)
         # weights initialization
         for m in self.modules():
@@ -64,11 +68,14 @@ class RB(nn.Module):
         layers = []
         kernel_size = 3
         for _ in range(1):
-            layers.append(nn.Conv2d(in_channels=features, out_channels=features, kernel_size=kernel_size, padding=kernel_size//2, bias=True))
+            layers.append(nn.Conv2d(in_channels=features, out_channels=features, kernel_size=kernel_size,
+                                    padding=kernel_size // 2, bias=True))
             layers.append(nn.PReLU())
-            layers.append(nn.Conv2d(in_channels=features, out_channels=features, kernel_size=kernel_size, padding=kernel_size//2, bias=True))
+            layers.append(nn.Conv2d(in_channels=features, out_channels=features, kernel_size=kernel_size,
+                                    padding=kernel_size // 2, bias=True))
         self.res = nn.Sequential(*layers)
         self.ca = CA(features)
+
     def forward(self, x):
         out = self.res(x)
         out = self.ca(out)
@@ -81,6 +88,7 @@ class _down(nn.Module):
         super(_down, self).__init__()
         self.conv = nn.Conv2d(in_channels=channel_in, out_channels=2 * channel_in, kernel_size=3, stride=2, padding=1)
         self.relu = nn.PReLU()
+
     def forward(self, x):
         out = self.relu(self.conv(x))
         return out
@@ -133,5 +141,5 @@ class AB(nn.Module):
         out = torch.cat([conc1, out], 1)
         out = self.DCR_block11(out)
         out = self.relu2(self.conv_f(out))
-        #out += x
+        # out += x
         return out
