@@ -24,6 +24,15 @@ class L_Abs_sideout(nn.Module):
         return Abs_loss
 
 
+'''
+masked_scene = pred_scene * (1 - flare_mask) + scene * flare_mask
+loss_value = loss_fn(scene, masked_scene)
+if flare_loss_weight > 0:
+    masked_flare = pred_flare * (1 - flare_mask) + flare * flare_mask
+    loss_value += flare_loss_weight * loss_fn(flare, masked_flare)
+
+'''
+
 class L_Abs(nn.Module):
     def __init__(self):
         super(L_Abs, self).__init__()

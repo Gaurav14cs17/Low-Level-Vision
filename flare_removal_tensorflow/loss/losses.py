@@ -15,8 +15,6 @@ class PerceptualLoss(tf.keras.losses.Loss):
     true_features = self._model(y_true)
     pred_features = self._model(y_pred)
     total_loss = tf.constant(0.0)
-    print(self._coeffs)
-    print(true_features)
     for ft, fp, coeff in zip(true_features, pred_features, self._coeffs):
       loss = tf.keras.losses.MAE(ft, fp)
       loss = tf.reduce_mean(loss, axis=[1, 2], keepdims=True)
