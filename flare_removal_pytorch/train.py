@@ -12,13 +12,13 @@ shuffle = True
 data_path = "D:/labs/LOW_LEVEL_IMAGEING/data/Flare7K_dataset/"
 output_path = "D:/labs/LOW_LEVEL_IMAGEING/data/output/"
 from matplotlib import pyplot as plt
-transform_base = transforms.Compose([transforms.RandomCrop((512, 512), pad_if_needed=True, padding_mode='reflect'),
+transform_base = transforms.Compose([transforms.RandomCrop((256, 256), pad_if_needed=True, padding_mode='reflect'),
                                      transforms.RandomHorizontalFlip(),
                                      transforms.RandomVerticalFlip()
                                      ])
 transform_flare = transforms.Compose([transforms.RandomAffine(degrees=(0, 360), scale=(0.8, 1.5),
                                                               translate=(300 / 1440, 300 / 1440), shear=(-20, 20)),
-                                      transforms.CenterCrop((512, 512)),
+                                      transforms.CenterCrop((256,256)),
                                       transforms.RandomHorizontalFlip(),
                                       transforms.RandomVerticalFlip()
                                       ])
@@ -104,8 +104,9 @@ class Train:
         print(log)
 
 
-    def get_loss(self , pred_scene , pred_flare ,flare_mask , scene , flare, flare_loss_weight = 1.0):
+    def get_loss(self , pred_scene , pred_flare ,flare_mask , scene , flare, flare_loss_weight = 0.0):
         masked_scene = pred_scene * (1 - flare_mask) + scene * flare_mask
+        # plt.imsave("masked_scene.png", masked_scene[0].detach().permute(1, 2, 0).cpu().numpy())
         loss_value = self.loss_fn(scene, masked_scene)
         if flare_loss_weight > 0:
             masked_flare = pred_flare * (1 - flare_mask) + flare * flare_mask
@@ -138,7 +139,7 @@ class Train:
         self.model.train()
         for epoch in range(self.args.epochs):
             for i, (base_img, flare_img, merge_img, flare_mask_img , gamma) in enumerate(train_dataloader):
-                global_step = num_iters_per_epoch * epoch + self.args.batch_size + 1
+                global_step = i * epoch + self.args.batch_size + 1
                 merge_img = merge_img.to(self.device)
                 #-----------------------------------
                 flare_img = flare_img.to(self.device)
@@ -146,10 +147,13 @@ class Train:
                 flare_mask_img = flare_mask_img.to(self.device)
                 #------------------------------------------------
                 pred_scene = self.model(merge_img)
-                pred_flare = remove_flare(merge_img, pred_scene, gamma.detach().cpu().numpy())
+                pred_flare = remove_flare(merge_img, pred_scene, gamma.detach().cpu().numpy()) # plt.imsave("pred_flare.png", pred_flare[0].detach().permute(1, 2, 0).cpu().numpy())
+
                 loss = self.get_loss(pred_scene, pred_flare, flare_mask_img, base_img, flare_img)
+
                 loss.backward()
                 total_loss = loss.detach().item()
+                print("total loss , global_step" , total_loss , global_step)
                 if global_step % self.args.subdivisions == 0:
                     optimizer.step()
                     optimizer.zero_grad()

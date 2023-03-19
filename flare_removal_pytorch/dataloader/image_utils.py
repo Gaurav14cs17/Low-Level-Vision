@@ -59,7 +59,7 @@ def remove_flare( combined, flare, gamma = 2.2):
 
 
 def get_highlight_mask(flare_image,threshold = 0.99):
-    binary_mask = torch.mean(flare_image, dim=-1) > threshold
+    binary_mask = torch.mean(flare_image , dim = 0) > threshold
     mask = binary_mask.type(torch.uint8)
     return mask
 
@@ -98,7 +98,8 @@ def normalize_white_balance(im):
 
 def blend_light_source(scene_input, scene_pred):
     binary_mask = get_highlight_mask(scene_input ).numpy()
-    binary_mask = np.squeeze(binary_mask , axis=-1)
+    print(binary_mask.shape)
+    #binary_mask = np.squeeze(binary_mask , axis=-1)
     binary_mask = refine_mask(binary_mask)
 
     labeled = skimage.measure.label(binary_mask)

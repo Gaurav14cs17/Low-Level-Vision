@@ -3,7 +3,7 @@ import torch
 from torchvision import models as tv
 from torch.nn import functional as F
 import torch.nn as nn
-
+from torchvision.models import vgg19
 
 class resnet(torch.nn.Module):
     def __init__(self, requires_grad=False, pretrained=True, num=18):
@@ -48,21 +48,56 @@ class resnet(torch.nn.Module):
         return out
 
 
+# class PerceptualLoss(nn.Module):
+#     def __init__(self, loss_weight=1.0):
+#         super(PerceptualLoss, self).__init__()
+#         self.resnet_model = resnet()
+#         self.layer_weights = [1 / 2.6, 1 / 4.8, 1 / 3.7, 1 / 5.6, 10 / 1.5]
+#         self.perceptual_weight = loss_weight
+#
+#     def forward(self, x, gt):
+#         x_features = self.resnet_model(x)
+#         gt_features = self.resnet_model(gt.detach())
+#         percep_loss = 0
+#         for k in range(len(self.layer_weights)):
+#             percep_loss += F.l1_loss(x_features[k], gt_features[k]) * self.layer_weights[k]
+#         #percep_loss *= self.perceptual_weight
+#         return percep_loss
+
+
 class PerceptualLoss(nn.Module):
     def __init__(self, loss_weight=1.0):
         super(PerceptualLoss, self).__init__()
-        self.resnet_model = resnet()
-        self.layer_weights = [1 / 2.6, 1 / 4.8, 1 / 3.7, 1 / 5.6, 10 / 1.5]
-        self.perceptual_weight = loss_weight
+        self.loss_weight = loss_weight
+        vgg = vgg19(pretrained=True)
+        model = nn.Sequential(*list(vgg.features)[:31])
+        #model = model.cuda()
+        model = model.eval()
+        # Freeze VGG19 #
+        for param in model.parameters():
+            param.requires_grad = False
 
-    def forward(self, x, gt):
-        x_features = self.resnet_model(x)
-        gt_features = self.resnet_model(gt.detach())
-        percep_loss = 0
-        for k in range(len(self.layer_weights)):
-            percep_loss += F.mse_loss(x_features[k], gt_features[k], reduction='mean') * self.layer_weights[k]
-        percep_loss *= self.perceptual_weight
-        return percep_loss
+        self.vgg = model
+        self.mae_loss = nn.L1Loss()
+        self.selected_feature_index = [2, 7, 12, 21, 30]
+        self.layer_weight = [1 / 2.6, 1 / 4.8, 1 / 3.7, 1 / 5.6, 10 / 1.5]
+
+    def extract_feature(self, x):
+        selected_features = []
+        for i, model in enumerate(self.vgg):
+            x = model(x)
+            if i in self.selected_feature_index:
+                selected_features.append(x.clone())
+        return selected_features
+
+    def forward(self, source, target):
+        source_feature = self.extract_feature(source)
+        target_feature = self.extract_feature(target)
+        len_feature = len(source_feature)
+        perceptual_loss = 0
+        for i in range(len_feature):
+            perceptual_loss += self.mae_loss(source_feature[i], target_feature[i]) * self.layer_weight[i]
+        return self.loss_weight * perceptual_loss
 
 
 if __name__ == '__main__':
