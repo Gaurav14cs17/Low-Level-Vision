@@ -3714,24 +3714,6 @@ Refer to
 
 
 
-### Related suggestion
-
-*   [\[YOLOv7/YOLOv5 series algorithm improvement NO.47\] Improved activation function to GELU](https://aitechtogether-com.translate.goog/article/44440.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) February 23, 2023
-*   [LSTM Detailed Explanation](https://aitechtogether-com.translate.goog/article/46847.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) February 25, 2023
-*   [The self-motion distortion algorithm based on Livox lidar is open-sourced](https://aitechtogether-com.translate.goog/article/3601.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) January 18, 2022
-*   [Brain tumor segmentation paper study (3) Two-Stage Cascaded U-Net 1st Place Solution to BraTS Challenge 2019Segmentation Task](https://aitechtogether-com.translate.goog/article/22491.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) April 15, 2022
-*   [GPT3.5, the relationship between InstructGPT and ChatGPT](https://aitechtogether-com.translate.goog/python/111769.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) June 12, 2023
-*   [Common classification models: decision tree, random forest, GBDT, XGB](https://aitechtogether-com.translate.goog/article/48472.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) March 1, 2023
-*   [\[Dataset\] MINIST Dataset Introduction](https://aitechtogether-com.translate.goog/python/64528.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) March 25, 2023
-*   [Revolutionizing Object Detection with YOLOv5 and MobileViTs Backbone Networks: The Future of Efficient and Accurate AI Vision](https://aitechtogether-com.translate.goog/python/106763.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) June 4, 2023
-*   [VS configuration permanent OpenCV (Xiaomeng easy operation): ultra-detailed](https://aitechtogether-com.translate.goog/article/46427.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) February 25, 2023
-*   [Python specifies the use of gpu](https://aitechtogether-com.translate.goog/python/52494.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) March 8, 2023
-*   [Computer Vision - Visual Saliency Detection in Images](https://aitechtogether-com.translate.goog/article/45134.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) February 24, 2023
-*   [How much is the API of chatGPT once - how to use chatGPT to solve the problemMay](https://aitechtogether-com.translate.goog/python/90005.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) 4, 2023
-*   [Four major AI directions that need to be focused on in 2023](https://aitechtogether-com.translate.goog/article/43671.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) February 5, 2023
-*   [In-depth understanding of machine learning - association rule mining: basic knowledge](https://aitechtogether-com.translate.goog/python/121700.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) June 25, 2023
-*   [AI virtual anchor digital human technology realizes Wav2Lip \[with full version tutorial\] and \[effect evaluation\]](https://aitechtogether-com.translate.goog/python/119906.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) June 25, 2023
-*   [Time series model SCINet model (custom project)](https://aitechtogether-com.translate.goog/python/62046.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) March 19, 2023
 
 
 
