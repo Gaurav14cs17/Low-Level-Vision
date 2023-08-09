@@ -3450,7 +3450,7 @@ Others
 AAAI2022-Low-Level-Vision
 =========================
 
-Image Restoration – 图像恢复
+Image Restoration 
 ------------------------
 
 **Unsupervised Underwater Image Restoration: From a Homology Perspective**
