@@ -3695,7 +3695,7 @@ Image Generation/Synthesis / Image-to-Image Translation – Image Generation/Syn
 *   Paper:  [AAAI2022: Learning Temporally and Semantically Consistent Unpaired Video-to-Video Translation through Pseudo-Supervision from Synthetic Optical Flow](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://aaai-2022.virtualchair.net/poster_aaai4610 "AAAI2022: Learning Temporally and Semantically Consistent Unpaired Video-to-Video Translation through Pseudo-Supervision from Synthetic Optical Flow")
 *   Code:  [GitHub – wangkaihong/Unsup\_Recycle\_GAN: Code for “Learning Temporally and Semantically Consistent Unpaired Video-to-video Translation Through Pseudo-Supervision From Synthetic Optical Flow”, AAAI 2022](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/wangkaihong/Unsup_Recycle_GAN "GitHub - wangkaihong/Unsup_Recycle_GAN: Code for")
 
-Refer to
+Reference
 ========
 
 [What are low-level and high-level tasks\_low-level tasks\_WTHunt's Blog-CSDN Blog](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://blog.csdn.net/qq_20880415/article/details/117225213 "What are low-level and high-level tasks_low-level tasks_WTHunt's Blog-CSDN Blog")
@@ -3711,6 +3711,8 @@ Refer to
 *   [Awesome-ICCV2021-Low-Level-Vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/Kobaayyy/Awesome-ICCV2021-Low-Level-Vision "Awesome-ICCV2021-Low-Level-Vision")
 *   [Awesome-CVPR2021/CVPR2020-Low-Level-Vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/Kobaayyy/Awesome-CVPR2021-CVPR2020-Low-Level-Vision "Awesome-CVPR2021/CVPR2020-Low-Level-Vision")
 *   [Awesome-ECCV2020-Low-Level-Vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/Kobaayyy/Awesome-ECCV2020-Low-Level-Vision "Awesome-ECCV2020-Low-Level-Vision")
+
+*   https://aitechtogether.com/python/107134.html
 
 
 
