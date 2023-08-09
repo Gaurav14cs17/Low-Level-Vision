@@ -3478,7 +3478,7 @@ Image Restoration
 *   Paper: [AAAI2022: Transcoded Video Restoration by Temporal Spatial Auxiliary Network](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://aaai-2022.virtualchair.net/poster_aaai12302 "AAAI2022: Transcoded Video Restoration by Temporal Spatial Auxiliary Network")
 *   Tags: Transcoded Video Restoration
 
-Super Resolution – 超分辨率
+Super Resolution 
 -----------------------
 
 ### Image Super Resolution
