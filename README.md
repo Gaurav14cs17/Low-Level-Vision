@@ -3695,7 +3695,7 @@ Image Generation/Synthesis / Image-to-Image Translation – Image Generation/Syn
 *   Paper:  [AAAI2022: Learning Temporally and Semantically Consistent Unpaired Video-to-Video Translation through Pseudo-Supervision from Synthetic Optical Flow](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://aaai-2022.virtualchair.net/poster_aaai4610 "AAAI2022: Learning Temporally and Semantically Consistent Unpaired Video-to-Video Translation through Pseudo-Supervision from Synthetic Optical Flow")
 *   Code:  [GitHub – wangkaihong/Unsup\_Recycle\_GAN: Code for “Learning Temporally and Semantically Consistent Unpaired Video-to-video Translation Through Pseudo-Supervision From Synthetic Optical Flow”, AAAI 2022](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/wangkaihong/Unsup_Recycle_GAN "GitHub - wangkaihong/Unsup_Recycle_GAN: Code for")
 
-refer to
+Refer to
 ========
 
 [What are low-level and high-level tasks\_low-level tasks\_WTHunt's Blog-CSDN Blog](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://blog.csdn.net/qq_20880415/article/details/117225213 "What are low-level and high-level tasks_low-level tasks_WTHunt's Blog-CSDN Blog")
@@ -3714,7 +3714,7 @@ refer to
 
 
 
-### related suggestion
+### Related suggestion
 
 *   [\[YOLOv7/YOLOv5 series algorithm improvement NO.47\] Improved activation function to GELU](https://aitechtogether-com.translate.goog/article/44440.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) February 23, 2023
 *   [LSTM Detailed Explanation](https://aitechtogether-com.translate.goog/article/46847.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=nui) February 25, 2023
