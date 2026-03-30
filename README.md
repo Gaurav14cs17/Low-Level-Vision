@@ -1,6 +1,6 @@
 # Awesome Low-Level Vision — Paper Collection
 
-> A curated collection of papers and code covering low-level and restoration tasks from top computer vision conferences (CVPR, ICCV, ECCV, AAAI, NeurIPS). Updated through **CVPR 2024**.
+> A curated collection of papers and code covering low-level and restoration tasks from top computer vision conferences (CVPR, ICCV, ECCV, AAAI, NeurIPS). Updated through **ICCV 2025 / NeurIPS 2025**.
 
 ---
 
@@ -27,6 +27,10 @@
 
 | 📋 Conference | 📅 Year | 📄 Papers | 🔍 SR | 🔇 DN | 💫 DB | 🌧️ DR | 🌫️ DH | 🌙 LL | 🎬 VR | 🎞️ FI | 🎨 Gen | 📊 IQA | ⚙️ Dominant Methods | 🔗 Link |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|:---:|
+| **CVPR** | **2025** | ~22 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Mamba · Diffusion · MoE · RWKV | [↗ Jump](#cvpr2025-low-level-vision) |
+| **ICCV** | **2025** | ~10 | ✅ | ✅ | ✅ | | ✅ | ✅ | | | ✅ | | Diffusion · Autoregressive | [↗ Jump](#iccv2025-low-level-vision) |
+| **NeurIPS** | **2025** | ~8 | ✅ | ✅ | ✅ | | | | | | ✅ | | Diffusion · One-Step | [↗ Jump](#neurips2025-low-level-vision) |
+| **AAAI** | **2025** | ~5 | ✅ | | | | | | | | | | Diffusion · Transformer | [↗ Jump](#aaai2025-low-level-vision) |
 | **CVPR** | **2024** | ~21 | ✅ | ✅ | ✅ | | | ✅ | ✅ | | ✅ | ✅ | Diffusion · Transformer · VLM | [↗ Jump](#cvpr2024-low-level-vision) |
 | **ICCV** | **2023** | ~24 | ✅ | ✅ | ✅ | | ✅ | ✅ | ✅ | | ✅ | ✅ | Transformer · Diffusion · Retinex | [↗ Jump](#iccv2023-low-level-vision) |
 | **ECCV** | **2024** | ~19 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | | ✅ | ✅ | ✅ | Diffusion · Mamba · Transformer | [↗ Jump](#eccv2024-low-level-vision) |
@@ -36,7 +40,186 @@
 | **ECCV** | **2022** | ~256 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Transformer · GAN · Flow | [↗ Jump](#eccv2022-low-level-vision) |
 | **AAAI** | **2022** | ~39 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | | | ✅ | ✅ | CNN · Transformer | [↗ Jump](#aaai2022-low-level-vision) |
 
-> **Total papers indexed: ~739+** across 8 conference tracks (2022–2024)
+> **Total papers indexed: ~784+** across 12 conference tracks (2022–2025)
+
+---
+
+CVPR2025-Low-Level-Vision
+=========================
+
+Image Restoration
+-----------------
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**MaIR: A Locality- and Continuity-Preserving Mamba for Image Restoration**](https://arxiv.org/abs/2412.20066) | [💻 Code](https://github.com/XLearning-SCU/2025-CVPR-MaIR) | `Mamba, All-in-One, SR/DN/DB/DH` |
+| 2 | [**Degradation-Aware Feature Perturbation for All-in-One Image Restoration (DFPIR)**](https://openaccess.thecvf.com/content/CVPR2025/html/Tian_Degradation-Aware_Feature_Perturbation_for_All-in-One_Image_Restoration_CVPR_2025_paper.html) | [💻 Code](https://github.com/TxpHome/DFPIR) | `All-in-One, DN/DH/DR/DB/LL` |
+| 3 | [**MoCE-IR: Complexity Experts are Task-Discriminative Learners for Any Image Restoration**](https://arxiv.org/abs/2412.08530) | [💻 Code](https://github.com/eduardzamfir/MoCE-IR) | `Mixture-of-Experts, All-in-One` |
+| 4 | [**Visual-Instructed Degradation Diffusion for All-in-One Image Restoration**](https://openaccess.thecvf.com/content/CVPR2025/papers/Luo_Visual-Instructed_Degradation_Diffusion_for_All-in-One_Image_Restoration_CVPR_2025_paper.pdf) | — | `Diffusion, Visual Instruction, All-in-One` |
+
+### Super Resolution
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**CATANet: Efficient Content-Aware Token Aggregation for Lightweight Image Super-Resolution**](https://openaccess.thecvf.com/content/CVPR2025/html/Liu_CATANet_Efficient_Content-Aware_Token_Aggregation_for_Lightweight_Image_Super-Resolution_CVPR_2025_paper.html) | — | `Lightweight SR, Transformer, Token Aggregation` |
+
+### Video Restoration
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**Hazy Low-Quality Satellite Video Restoration via Learning Optimal Joint Degradation**](https://openaccess.thecvf.com/content/CVPR2025/html/Ni_Hazy_Low-Quality_Satellite_Video_Restoration_Via_Learning_Optimal_Joint_Degradation_CVPR_2025_paper.html) | — | `Video Dehazing, Video SR, Satellite Imagery` |
+
+Deblurring
+----------
+
+### Video Deblurring
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**EDEN: Enhanced Diffusion for High-quality Large-motion Video Frame Interpolation**](https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_EDEN_Enhanced_Diffusion_for_High-quality_Large-motion_Video_Frame_Interpolation_CVPR_2025_paper.html) | — | `Diffusion, Frame Interpolation, Large Motion` |
+
+Image Enhancement
+-----------------
+
+### Low-Light Image Enhancement
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**URWKV: Unified RWKV Model with Multi-state Perspective for Low-light Image Enhancement**](https://openaccess.thecvf.com/content/CVPR2025/html/Xu_URWKV_Unified_RWKV_Model_with_Multi-state_Perspective_for_Low-light_Image_CVPR_2025_paper.html) | [💻 Code](https://github.com/FZU-N/URWKV) | `RWKV, Low-Light, Joint Deblurring` |
+| 2 | [**DarkIR: Robust Low-Light Image Restoration**](https://openaccess.thecvf.com/content/CVPR2025/html/Feijoo_DarkIR_Robust_Low-Light_Image_Restoration_CVPR_2025_paper.html) | [💻 Code](https://github.com/cidautai/DarkIR) | `CNN, Low-Light, Multi-task` |
+
+Shadow Removal
+--------------
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**Detail-Preserving Latent Diffusion for Stable Shadow Removal**](https://openaccess.thecvf.com/content/CVPR2025/html/Xu_Detail-Preserving_Latent_Diffusion_for_Stable_Shadow_Removal_CVPR_2025_paper.html) | — | `Diffusion, Shadow Removal, Stable Diffusion Fine-tuning` |
+
+Frame Interpolation
+-------------------
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**Hierarchical Flow Diffusion for Efficient Frame Interpolation**](https://hfd-interpolation.github.io/) | — | `Diffusion, Frame Interpolation, Optical Flow` |
+| 2 | [**Generative Inbetweening through Frame-wise Conditions-Driven Video Generation**](https://fcvg-inbetween.github.io/) | — | `Video Generation, Frame Interpolation, Keyframe` |
+
+Image Matting
+-------------
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**MatAnyone: Stable Video Matting with Consistent Memory Propagation**](https://arxiv.org/abs/2501.03006) | [💻 Code](https://github.com/pq-yang/MatAnyone) | `Video Matting, Memory Propagation, Human Matting` |
+
+Image Quality Assessment
+------------------------
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**Toward Generalized Image Quality Assessment: Relaxing the Perfect Reference Quality Assumption**](https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Toward_Generalized_Image_Quality_Assessment_Relaxing_the_Perfect_Reference_Quality_CVPR_2025_paper.html) | — | `IQA, Full-Reference, Generalized, Diffusion` |
+
+Style Transfer
+--------------
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**OmniStyle: Filtering High Quality Style Transfer Data at Scale**](https://openaccess.thecvf.com/content/CVPR2025W/NTIRE/html/Dong_Retinex-Guided_Histogram_Transformer_for_Mask-Free_Shadow_Removal_CVPRW_2025_paper.html) | — | `Style Transfer, Diffusion Transformer, Large-Scale Dataset` |
+
+Image Generation/Synthesis
+--------------------------
+
+### Video Generation
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**Tora: Trajectory-oriented Diffusion Transformer for Video Generation**](https://arxiv.org/abs/2407.21705) | [💻 Code](https://github.com/alibaba/Tora) | `DiT, Video Generation, Trajectory Control` |
+| 2 | [**Mask2DiT: Dual Mask-based Diffusion Transformer for Multi-Scene Long Video Generation**](https://openaccess.thecvf.com/content/CVPR2025/html/Qi_Mask2DiT_Dual_Mask-based_Diffusion_Transformer_for_Multi-Scene_Long_Video_Generation_CVPR_2025_paper.html) | — | `DiT, Long Video, Multi-Scene` |
+| 3 | [**Mimir: Improving Video Diffusion Models for Precise Text Understanding**](https://openaccess.thecvf.com/content/CVPR2025/html/Tan_Mimir_Improving_Video_Diffusion_Models_for_Precise_Text_Understanding_CVPR_2025_paper.html) | — | `Video Diffusion, LLM, Text-to-Video` |
+
+### Efficient Generation
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**FlexiDiT: Your Diffusion Transformer Can Easily Generate High-Quality Samples with Less Compute**](https://openaccess.thecvf.com/content/CVPR2025/html/Anagnostidis_FlexiDiT_Your_Diffusion_Transformer_Can_Easily_Generate_High-Quality_Samples_with_CVPR_2025_paper.html) | — | `DiT, Efficient Inference, Adaptive Compute` |
+
+---
+
+ICCV2025-Low-Level-Vision
+=========================
+
+Image Restoration
+-----------------
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**UniRes: Universal Image Restoration for Complex Degradations**](https://openaccess.thecvf.com/content/ICCV2025/html/Zhou_UniRes_Universal_Image_Restoration_for_Complex_Degradations_ICCV_2025_paper.html) | — | `Diffusion, Universal Restoration, Mixed Degradations` |
+| 2 | [**LD-RPS: Zero-Shot Unified Image Restoration via Latent Diffusion Recurrent Posterior Sampling**](https://openaccess.thecvf.com/content/ICCV2025/html/Li_LD-RPS_Zero-Shot_Unified_Image_Restoration_via_Latent_Diffusion_Recurrent_Posterior_ICCV_2025_paper.html) | — | `Zero-Shot, Diffusion, Recurrent Posterior Sampling` |
+| 3 | [**Frequency-Guided Posterior Sampling for Diffusion-Based Image Restoration**](https://openaccess.thecvf.com/content/ICCV2025/html/Thaker_Frequency-Guided_Posterior_Sampling_for_Diffusion-Based_Image_Restoration_ICCV_2025_paper.html) | — | `Diffusion, Frequency Domain, Deblurring, Dehazing` |
+| 4 | [**Decouple to Reconstruct: High Quality UHD Restoration**](https://openaccess.thecvf.com/content/ICCV2025/html) | — | `UHD, All-in-One, Feature Disentanglement` |
+
+### Super Resolution
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**LightBSR: Towards Lightweight Blind Super-Resolution via Discriminative Implicit Degradation Representation**](https://arxiv.org/abs/2506.22710) | — | `Blind SR, Lightweight, Knowledge Distillation` |
+| 2 | [**PURE: Perceive, Understand and Restore Real-World Image Super-Resolution with Autoregressive Multimodal**](https://arxiv.org/abs/2503.11073) | — | `Real-World SR, Autoregressive, Multimodal, LLM` |
+
+Denoising
+---------
+
+### Image Denoising
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**IDF: Iterative Dynamic Filtering Networks for Generalizable Image Denoising**](https://openaccess.thecvf.com/content/ICCV2025/html/Kim_IDF_Iterative_Dynamic_Filtering_Networks_for_Generalizable_Image_Denoising_ICCV_2025_paper.html) | — | `Dynamic Filtering, Generalizable, Compact Model` |
+
+Image Enhancement
+-----------------
+
+### Low-Light Image Enhancement
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**Noise-Modeled Diffusion Models for Low-Light Spike Image Restoration**](https://openaccess.thecvf.com/content/ICCV2025/html/Liu_Noise-Modeled_Diffusion_Models_for_Low-Light_Spike_Image_Restoration_ICCV_2025_paper.html) | — | `Diffusion, Spike Camera, Low-Light, Noise Modeling` |
+
+---
+
+NeurIPS2025-Low-Level-Vision
+=============================
+
+Image Restoration
+-----------------
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**DGSolver: Diffusion Generalist Solver with Universal Posterior Sampling for Image Restoration**](https://openreview.net/forum?id=ghhKZ0NaQN) | — | `Diffusion, High-Order Solver, Universal Posterior Sampling` |
+| 2 | [**A Minimalistic Unified Framework for Incremental Learning across Image Restoration Tasks**](https://neurips.cc/virtual/2025/poster/118487) | — | `Incremental Learning, Unified Restoration, Meta-Convolution` |
+
+Deblurring
+----------
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**DeblurDiff: Real-World Image Deblurring with Generative Diffusion Models**](https://neurips.cc/virtual/2025/poster/117332) | — | `Diffusion, Deblurring, Stable Diffusion, Latent Kernel` |
+
+### Super Resolution
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**Text-Aware Real-World Image Super-Resolution via Diffusion Model with Joint Segmentation Decoders**](https://neurips.cc/virtual/2025/poster/115913) | — | `Real-World SR, Diffusion, Text-Aware, Segmentation` |
+| 2 | [**D³SR: Unleashing the Power of One-Step Diffusion for Image Super-Resolution via a Large-Scale Diffusion Discriminator**](https://openreview.net/forum?id=0M1gi4P4ka) | — | `One-Step Diffusion, SR, Diffusion Discriminator` |
+
+---
+
+AAAI2025-Low-Level-Vision
+==========================
+
+### Super Resolution
+
+| # | Paper | Code | Tags |
+|:---:|:---|:---:|:---|
+| 1 | [**Unsupervised Degradation Representation Aware Transform for Real-World Blind Image Super-Resolution**](https://ojs.aaai.org/index.php/AAAI/article/view/32216) | — | `Blind SR, Unsupervised, Degradation Representation` |
+| 2 | [**Effective Diffusion Transformer Architecture for Image Super-Resolution**](https://ojs.aaai.org/index.php/AAAI/article/view/32247) | — | `Diffusion Transformer, SR, Frequency-Adaptive` |
+| 3 | [**StructSR: Refuse Spurious Details in Real-World Image Super-Resolution**](https://ojs.aaai.org/index.php/AAAI/article/view/32532) | — | `Real-World SR, Diffusion, Structure-Aware Screening` |
 
 ---
 
