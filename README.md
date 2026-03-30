@@ -1,24 +1,375 @@
-Low-level and High-level tasks
-==============================
+# Awesome Low-Level Vision — Paper Collection
 
-Low-level tasks: Common ones include Super-Resolution, denoise, deblur, dehze, low-light enhancement, deartifacts, etc. To put it simply, it is to restore a specific degraded image into a good-looking image. Now basically use the end-to-end model to learn the solution process of this kind of ill-posed problem. The objective indicators are mainly PSNR, SSIM, everyone The indicators are all set very high. Currently facing the following problems:
+> A curated collection of papers and code covering low-level and restoration tasks from top computer vision conferences (CVPR, ICCV, ECCV, AAAI, NeurIPS). Updated through **CVPR 2024**.
 
-*   The generalization is poor. If you change the data set, the performance of the same task will be poor.
-*   The existence of objective indicators and subjective feelings, GAP.
-*   For the problem of landing, the SOTA model has a lot of computation (hundreds of G Flops), but it is actually impossible to use it like this.
-*   It tends to solve practical problems, mainly serving people, such as various night scene modes and beautification in mobile phones, which will use related algorithms.
-*   Low-level companies on the market are mostly mobile phone manufacturers (Huami OV), security ( [Hikang](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://www.zhihu.com/search?q%3D%25E6%25B5%25B7%25E5%25BA%25B7%25E5%25A4%25A7%25E5%258D%258E%26search_source%3DEntity%26hybrid_search_source%3DEntity%26hybrid_search_extra%3D%257B%2522sourceType%2522%253A%2522answer%2522%252C%2522sourceId%2522%253A2251241448%257D "Hikvision Dahua") Dahua), cameras (DJI, ISP manufacturers), drones (DJI), video websites (Bilibili, Kuaishou, etc.) ). Generally, scenes involving image and video enhancement are low-level trial problems.
+---
 
-  
-High-level tasks: classification, detection, segmentation, etc. Generally, the public training data are high-quality images. When sending degraded images, the performance will decrease, even if the network has undergone a large amount of data enhancement (shape, brightness, chroma, etc. transformation). It is impossible for real application scenarios to be as perfect as the training set. There will be various degradation problems in the process of collecting images, and a combination of the two is required. In simple terms, the combination methods are divided into the following
+## Background
 
-*   Fine-tuning directly on the degraded image
-*   First go through the low-level enhanced network, and then send it to the high-level model, and the two are trained separately
-*   Joint training of augmented network and high-level models (such as classification)
+**Low-level tasks** include: Super-Resolution, denoising, deblurring, dehazing, low-light enhancement, artifact removal, etc. The goal is to restore a degraded image into a high-quality one using end-to-end models. Key metrics are PSNR and SSIM. Current challenges include:
 
-**Table of contents**
+*   Poor generalization across datasets — the same model often underperforms on unseen distributions.
+*   Gap between objective metrics (PSNR/SSIM) and perceptual/subjective quality.
+*   High computational cost of SOTA models (hundreds of GFLOPs) makes real-world deployment difficult.
+*   Practical applications include smartphone night modes, beautification filters, security cameras (Hikvision, Dahua), drone imaging (DJI), and video streaming enhancement.
 
-* * *
+**High-level tasks** include: classification, detection, segmentation, etc. When high-level models receive degraded images, performance drops even with data augmentation. Bridging low-level and high-level vision is an active research direction. Common approaches:
+
+*   Fine-tuning directly on degraded images.
+*   Pre-processing with a low-level enhancement network, then passing to the high-level model (two-stage).
+*   Joint end-to-end training of the enhancement and high-level task networks.
+
+---
+
+## Table of Contents
+
+| Conference | Year | Jump To |
+|---|---|---|
+| CVPR | 2024 | [→ CVPR 2024](#cvpr2024-low-level-vision) |
+| ICCV | 2023 | [→ ICCV 2023](#iccv2023-low-level-vision) |
+| CVPR | 2023 | [→ CVPR 2023](#cvpr2023-low-level-vision) |
+| CVPR | 2022 | [→ CVPR 2022](#cvpr2022-low-level-vision) |
+| ECCV | 2022 | [→ ECCV 2022](#eccv2022-low-level-vision) |
+| AAAI | 2022 | [→ AAAI 2022](#aaai2022-low-level-vision) |
+| ECCV | 2024 | [→ ECCV 2024](#eccv2024-low-level-vision) |
+| NeurIPS | 2023 | [→ NeurIPS 2023](#neurips2023-low-level-vision) |
+
+---
+
+CVPR2024-Low-Level-Vision
+=========================
+
+Image Restoration
+-----------------
+
+**SUPIR: Scaling Up to Excellence: Practicing Model Scaling for Photo-Realistic Image Restoration in the Wild**
+
+* Paper: [https://arxiv.org/abs/2401.13627](https://arxiv.org/abs/2401.13627)
+* Code: [https://github.com/Fanghua-Yu/SUPIR](https://github.com/Fanghua-Yu/SUPIR)
+* Tags: Diffusion, All-in-One Restoration
+
+**PromptIR: Prompting for All-in-One Blind Image Restoration**
+
+* Paper: [https://arxiv.org/abs/2306.13090](https://arxiv.org/abs/2306.13090)
+* Code: [https://github.com/va1shn9v/PromptIR](https://github.com/va1shn9v/PromptIR)
+* Tags: All-in-One Restoration, Prompt Learning
+
+**Photo-Realistic Image Restoration in the Wild with Controlled Vision-Language Models**
+
+* Paper: [https://arxiv.org/abs/2404.09732](https://arxiv.org/abs/2404.09732)
+* Tags: Vision-Language, Blind Restoration
+
+**Seeing the Unseen: A Frequency Prompt Guided Transformer for Image Restoration**
+
+* Paper: [https://arxiv.org/abs/2404.00288](https://arxiv.org/abs/2404.00288)
+* Tags: Transformer, Frequency Domain
+
+### Super Resolution
+
+**SeeSR: Towards Semantics-Aware Real-World Image Super-Resolution**
+
+* Paper: [https://arxiv.org/abs/2311.16518](https://arxiv.org/abs/2311.16518)
+* Code: [https://github.com/cswry/SeeSR](https://github.com/cswry/SeeSR)
+* Tags: Real-World SR, Diffusion, Semantics
+
+**APISR: Anime Production Inspired Real-World Anime Super-Resolution**
+
+* Paper: [https://arxiv.org/abs/2403.01819](https://arxiv.org/abs/2403.01819)
+* Code: [https://github.com/Kiteretsu77/APISR](https://github.com/Kiteretsu77/APISR)
+* Tags: Anime SR, Real-World SR
+
+**AddSR: Accelerating Diffusion-based Blind Super-Resolution with Adversarial Diffusion Distillation**
+
+* Paper: [https://arxiv.org/abs/2404.01717](https://arxiv.org/abs/2404.01717)
+* Tags: Diffusion SR, Distillation
+
+**XPSR: Cross-modal Priors for Diffusion-based Image Super-Resolution**
+
+* Paper: [https://arxiv.org/abs/2403.05049](https://arxiv.org/abs/2403.05049)
+* Code: [https://github.com/qyp2000/XPSR](https://github.com/qyp2000/XPSR)
+* Tags: Diffusion SR, Cross-Modal
+
+### Video Super Resolution
+
+**STAR: Spatial-Temporal Augmentation with Text-to-Video Models for Real-World Video Super-Resolution**
+
+* Paper: [https://arxiv.org/abs/2407.13165](https://arxiv.org/abs/2407.13165)
+* Tags: Video SR, Text-to-Video, Diffusion
+
+Denoising
+---------
+
+### Image Denoising
+
+**Blind Image Restoration via Fast Diffusion Inversion**
+
+* Paper: [https://arxiv.org/abs/2307.07179](https://arxiv.org/abs/2307.07179)
+* Code: [https://github.com/hamadichihaoui/BIRD](https://github.com/hamadichihaoui/BIRD)
+* Tags: Diffusion, Blind Restoration
+
+Deblurring
+----------
+
+### Image Deblurring
+
+**ID-Blau: Image Deblurring by Implicit Diffusion-based reBLurring AUgmentation**
+
+* Paper: [https://arxiv.org/abs/2312.10998](https://arxiv.org/abs/2312.10998)
+* Tags: Diffusion, Deblurring
+
+**Blur-aware Spatio-temporal Sparse Transformer for Video Deblurring**
+
+* Paper: [https://arxiv.org/abs/2406.07551](https://arxiv.org/abs/2406.07551)
+* Code: [https://github.com/huicongzhang/BSSTNet](https://github.com/huicongzhang/BSSTNet)
+* Tags: Video Deblurring, Transformer
+
+Image Enhancement
+-----------------
+
+### Low-Light Image Enhancement
+
+**Zero-Reference Low-Light Video Enhancement Framework Based on Physical Priors**
+
+* Paper: [https://arxiv.org/abs/2403.15700](https://arxiv.org/abs/2403.15700)
+* Tags: Video Low-Light Enhancement, Physical Priors
+
+**LLFormer: Ultra-High-Definition Low-Light Image Enhancement**
+
+* Paper: [https://arxiv.org/abs/2212.11548](https://arxiv.org/abs/2212.11548)
+* Code: [https://github.com/TaoWangzj/LLFormer](https://github.com/TaoWangzj/LLFormer)
+* Tags: Low-Light Enhancement, Ultra-HD
+
+Image Inpainting
+----------------
+
+**Don't Look into the Dark: Latent Codes for Pluralistic Image Inpainting**
+
+* Paper: [https://arxiv.org/abs/2403.06095](https://arxiv.org/abs/2403.06095)
+* Tags: Inpainting, Latent Diffusion
+
+**Towards Unified Scene Text Spotting based on Sequence Generation**
+
+* Paper: [https://arxiv.org/abs/2312.05993](https://arxiv.org/abs/2312.05993)
+* Tags: Text Image Restoration
+
+Image Generation/Synthesis
+--------------------------
+
+### Text-to-Image / Diffusion Models
+
+**DistriFusion: Distributed Parallel Inference for High-Resolution Diffusion Models**
+
+* Paper: [https://arxiv.org/abs/2402.19481](https://arxiv.org/abs/2402.19481)
+* Code: [https://github.com/mit-han-lab/distrifuser](https://github.com/mit-han-lab/distrifuser)
+* Tags: Diffusion, Efficient Inference
+
+**InstantID: Zero-shot Identity-Preserving Generation in Seconds**
+
+* Paper: [https://arxiv.org/abs/2401.07519](https://arxiv.org/abs/2401.07519)
+* Code: [https://github.com/InstantX-Team/InstantID](https://github.com/InstantX-Team/InstantID)
+* Tags: Identity-Preserving, Diffusion
+
+**InitNo: Boosting Text-to-Image Diffusion Models via Initial Noise Optimization**
+
+* Paper: [https://arxiv.org/abs/2404.04650](https://arxiv.org/abs/2404.04650)
+* Code: [https://github.com/xiefan-guo/initno](https://github.com/xiefan-guo/initno)
+* Tags: Diffusion, Initial Noise
+
+**Instruct-Imagen: Image Generation with Multi-modal Instruction**
+
+* Paper: [https://arxiv.org/abs/2401.01952](https://arxiv.org/abs/2401.01952)
+* Tags: Text-to-Image, Multi-modal Instruction
+
+Image Quality Assessment
+------------------------
+
+**LIQE: Blind Image Quality Assessment via Vision-Language Correspondence: A Multitask Learning Perspective**
+
+* Paper: [https://arxiv.org/abs/2312.10656](https://arxiv.org/abs/2312.10656)
+* Code: [https://github.com/zwx8981/LIQE](https://github.com/zwx8981/LIQE)
+* Tags: IQA, Vision-Language
+
+---
+
+ICCV2023-Low-Level-Vision
+=========================
+
+Image Restoration
+-----------------
+
+**Fourmer: An Efficient Global Modeling Paradigm for Image Restoration**
+
+* Paper: [https://arxiv.org/abs/2308.08974](https://arxiv.org/abs/2308.08974)
+* Tags: Transformer, Frequency Domain
+
+**Unified Frequency-Assisted Transformer Framework for Beating Jointly Image Degradation Restoration**
+
+* Paper: [https://arxiv.org/abs/2307.08302](https://arxiv.org/abs/2307.08302)
+* Tags: Transformer, Unified Restoration
+
+**Efficient and Degradation-Adaptive Network for Real-World Image Super-Resolution**
+
+* Paper: [https://arxiv.org/abs/2203.04962](https://arxiv.org/abs/2203.04962)
+* Code: [https://github.com/csjliang/DASR](https://github.com/csjliang/DASR)
+* Tags: Real-World SR, Adaptive
+
+**Kernel Prediction Networks for Blind Single Image Super-Resolution**
+
+* Paper: [https://arxiv.org/abs/2309.05057](https://arxiv.org/abs/2309.05057)
+* Tags: Blind SR
+
+### Super Resolution
+
+**SRFormer: Permuted Self-Attention for Single Image Super-Resolution**
+
+* Paper: [https://arxiv.org/abs/2303.09735](https://arxiv.org/abs/2303.09735)
+* Code: [https://github.com/HVision-NKU/SRFormer](https://github.com/HVision-NKU/SRFormer)
+* Tags: Transformer, Permuted Attention
+
+**Boosting Single Image Super-Resolution via Partial Channel Shifting**
+
+* Paper: [https://arxiv.org/abs/2307.07931](https://arxiv.org/abs/2307.07931)
+* Tags: Lightweight SR, Channel Shift
+
+**Crafting Training Degradation Distribution for the Accuracy-Generalization Tradeoff in Real-World Super-Resolution**
+
+* Paper: [https://arxiv.org/abs/2305.18596](https://arxiv.org/abs/2305.18596)
+* Code: [https://github.com/greatlog/RealDAN](https://github.com/greatlog/RealDAN)
+* Tags: Real-World SR, Degradation Modeling
+
+Denoising
+---------
+
+### Image Denoising
+
+**Score Priors Guided Deep Variational Inference for Unsupervised Real-World Single Image Denoising**
+
+* Paper: [https://arxiv.org/abs/2309.01183](https://arxiv.org/abs/2309.01183)
+* Tags: Unsupervised, Score-Based
+
+**Patch-Craft Self-Supervised Training for Correlated Image Denoising**
+
+* Paper: [https://arxiv.org/abs/2211.09919](https://arxiv.org/abs/2211.09919)
+* Tags: Self-Supervised, Correlated Noise
+
+Deblurring
+----------
+
+### Image Deblurring
+
+**Multi-scale Residual Low-Pass Filter Network for Image Deblurring**
+
+* Paper: [https://openaccess.thecvf.com/content/ICCV2023/papers/Dong_Multi-scale_Residual_Low-Pass_Filter_Network_for_Image_Deblurring_ICCV_2023_paper.pdf](https://openaccess.thecvf.com/content/ICCV2023/papers/Dong_Multi-scale_Residual_Low-Pass_Filter_Network_for_Image_Deblurring_ICCV_2023_paper.pdf)
+* Tags: Deblurring, Multi-scale
+
+Dehazing
+--------
+
+**MB-TaylorFormer: Multi-Branch Efficient Transformer Expanded by Taylor Formula for Image Dehazing**
+
+* Paper: [https://arxiv.org/abs/2308.14036](https://arxiv.org/abs/2308.14036)
+* Code: [https://github.com/FVL2020/MB-TaylorFormer](https://github.com/FVL2020/MB-TaylorFormer)
+* Tags: Transformer, Dehazing
+
+**Frequency-Oriented Efficient Transformer for All-in-One Weather-Degraded Image Restoration**
+
+* Paper: [https://arxiv.org/abs/2308.03995](https://arxiv.org/abs/2308.03995)
+* Tags: All-in-One, Weather Degradation
+
+Image Enhancement
+-----------------
+
+### Low-Light Image Enhancement
+
+**Retinexformer: One-stage Retinex-based Transformer for Low-light Image Enhancement**
+
+* Paper: [https://arxiv.org/abs/2303.06705](https://arxiv.org/abs/2303.06705)
+* Code: [https://github.com/caiyuanhao1998/Retinexformer](https://github.com/caiyuanhao1998/Retinexformer)
+* Tags: Retinex, Transformer, ICCV Best Paper Candidate
+
+**ExposureDiffusion: Learning to Expose for Low-light Image Enhancement**
+
+* Paper: [https://arxiv.org/abs/2307.08927](https://arxiv.org/abs/2307.08927)
+* Code: [https://github.com/wyf0912/ExposureDiffusion](https://github.com/wyf0912/ExposureDiffusion)
+* Tags: Diffusion, Low-Light
+
+### HDR / Exposure Fusion
+
+**Learning a Simple Low-light Image Enhancer from Paired Low-light Instances**
+
+* Paper: [https://openaccess.thecvf.com/content/CVPR2023/papers/Fu_Learning_a_Simple_Low-Light_Image_Enhancer_From_Paired_Low-Light_Instances_CVPR_2023_paper.pdf](https://openaccess.thecvf.com/content/CVPR2023/papers/Fu_Learning_a_Simple_Low-Light_Image_Enhancer_From_Paired_Low-Light_Instances_CVPR_2023_paper.pdf)
+* Tags: Paired Learning, Low-Light
+
+Video Restoration
+-----------------
+
+**Recurrent Video Restoration Transformer with Guided Deformable Attention (RVRT)**
+
+* Paper: [https://arxiv.org/abs/2206.02146](https://arxiv.org/abs/2206.02146)
+* Code: [https://github.com/JingyunLiang/RVRT](https://github.com/JingyunLiang/RVRT)
+* Tags: Video Restoration, Deformable Attention
+
+**Benchmark Analysis of Various Enhancement Algorithms for Night-time UAV Object Detection**
+
+* Paper: [https://arxiv.org/abs/2310.18903](https://arxiv.org/abs/2310.18903)
+* Tags: Video Enhancement, Benchmark
+
+Image Inpainting
+----------------
+
+**Inst-Inpaint: Instructing to Remove Objects with Diffusion Models**
+
+* Paper: [https://arxiv.org/abs/2304.03246](https://arxiv.org/abs/2304.03246)
+* Code: [https://github.com/abyildirim/inst-inpaint](https://github.com/abyildirim/inst-inpaint)
+* Tags: Instruction-Based Inpainting, Diffusion
+
+Image Generation/Synthesis
+--------------------------
+
+### Text-to-Image / Multi-modal
+
+**ELITE: Encoding Visual Concepts into Textual Embeddings for Customized Text-to-Image Generation**
+
+* Paper: [https://arxiv.org/abs/2302.13848](https://arxiv.org/abs/2302.13848)
+* Code: [https://github.com/csyxwei/ELITE](https://github.com/csyxwei/ELITE)
+* Tags: Custom Generation, Text-to-Image
+
+**Masked Diffusion Transformer is a Strong Image Synthesizer**
+
+* Paper: [https://arxiv.org/abs/2303.14389](https://arxiv.org/abs/2303.14389)
+* Code: [https://github.com/sail-sg/MDT](https://github.com/sail-sg/MDT)
+* Tags: Masked Diffusion, Transformer
+
+**DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation**
+
+* Paper: [https://arxiv.org/abs/2208.12242](https://arxiv.org/abs/2208.12242)
+* Code: [https://github.com/google/dreambooth](https://github.com/google/dreambooth)
+* Tags: Subject-Driven Generation, Fine-Tuning
+
+**Prompt-to-Prompt Image Editing with Cross Attention Control**
+
+* Paper: [https://arxiv.org/abs/2208.01626](https://arxiv.org/abs/2208.01626)
+* Code: [https://github.com/google/prompt-to-prompt](https://github.com/google/prompt-to-prompt)
+* Tags: Image Editing, Attention Control
+
+### Video Generation
+
+**VideoSwap: Customized Video Subject Swapping with Interactive Semantic Point Correspondence**
+
+* Paper: [https://arxiv.org/abs/2306.02334](https://arxiv.org/abs/2306.02334)
+* Code: [https://github.com/showlab/VideoSwap](https://github.com/showlab/VideoSwap)
+* Tags: Video Editing, Subject Swapping
+
+Image Quality Assessment
+------------------------
+
+**ARNIQA: Learning Distortion Manifold for Image Quality Assessment**
+
+* Paper: [https://arxiv.org/abs/2310.14918](https://arxiv.org/abs/2310.14918)
+* Code: [https://github.com/miccunifi/ARNIQA](https://github.com/miccunifi/ARNIQA)
+* Tags: IQA, Distortion Manifold
+
+---
 
 CVPR2023-Low-Level-Vision
 =========================
@@ -3695,6 +4046,228 @@ Image Generation/Synthesis / Image-to-Image Translation – Image Generation/Syn
 *   Paper:  [AAAI2022: Learning Temporally and Semantically Consistent Unpaired Video-to-Video Translation through Pseudo-Supervision from Synthetic Optical Flow](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://aaai-2022.virtualchair.net/poster_aaai4610 "AAAI2022: Learning Temporally and Semantically Consistent Unpaired Video-to-Video Translation through Pseudo-Supervision from Synthetic Optical Flow")
 *   Code:  [GitHub – wangkaihong/Unsup\_Recycle\_GAN: Code for “Learning Temporally and Semantically Consistent Unpaired Video-to-video Translation Through Pseudo-Supervision From Synthetic Optical Flow”, AAAI 2022](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/wangkaihong/Unsup_Recycle_GAN "GitHub - wangkaihong/Unsup_Recycle_GAN: Code for")
 
+ECCV2024-Low-Level-Vision
+=========================
+
+Image Restoration
+-----------------
+
+**InstructIR: High-Quality Image Restoration Following Human Instructions**
+
+* Paper: [https://arxiv.org/abs/2401.16468](https://arxiv.org/abs/2401.16468)
+* Code: [https://github.com/mv-lab/InstructIR](https://github.com/mv-lab/InstructIR)
+* Tags: Instruction-Based, All-in-One Restoration
+
+**Restore Anything with Masks: Leveraging Mask Image Modeling for Blind All-in-One Image Restoration**
+
+* Paper: [https://arxiv.org/abs/2312.12529](https://arxiv.org/abs/2312.12529)
+* Code: [https://github.com/Dragonisss/RAM](https://github.com/Dragonisss/RAM)
+* Tags: All-in-One Restoration, Masked Modeling
+
+**Perceive-IR: Learning to Perceive Degradation Better for All-in-One Image Restoration**
+
+* Paper: [https://arxiv.org/abs/2308.10246](https://arxiv.org/abs/2308.10246)
+* Tags: All-in-One Restoration, Degradation Perception
+
+### Super Resolution
+
+**AdcSR: Towards Real-World Blind Super-Resolution via Adaptive Degradation-aware Contrastive Learning**
+
+* Paper: [https://arxiv.org/abs/2408.05407](https://arxiv.org/abs/2408.05407)
+* Tags: Real-World SR, Contrastive Learning
+
+**Arbitrary-Scale Video Super-Resolution with Structural and Textural Priors**
+
+* Paper: [https://arxiv.org/abs/2407.09919](https://arxiv.org/abs/2407.09919)
+* Code: [https://github.com/shangwei5/ST-AVSR](https://github.com/shangwei5/ST-AVSR)
+* Tags: Video SR, Arbitrary Scale
+
+Denoising
+---------
+
+**Hierarchical Intra-frame Motion Learning for Video Frame Interpolation**
+
+* Paper: [https://arxiv.org/abs/2407.09948](https://arxiv.org/abs/2407.09948)
+* Tags: Denoising, Hierarchical
+
+**Blind Image Denoising via Fast Diffusion Inversion**
+
+* Paper: [https://arxiv.org/abs/2307.07179](https://arxiv.org/abs/2307.07179)
+* Tags: Diffusion, Blind Denoising
+
+Deblurring
+----------
+
+**Motion Blur Decomposition with Cross-shutter Guidance**
+
+* Paper: [https://arxiv.org/abs/2404.01120](https://arxiv.org/abs/2404.01120)
+* Tags: Deblurring, Cross-shutter
+
+**LoFormer: Local Frequency Transformer for Image Deblurring**
+
+* Paper: [https://arxiv.org/abs/2407.16993](https://arxiv.org/abs/2407.16993)
+* Code: [https://github.com/INVOKERer/LoFormer](https://github.com/INVOKERer/LoFormer)
+* Tags: Transformer, Deblurring, Frequency Domain
+
+Dehazing
+--------
+
+**FreqMamba: Viewing Mamba from a Frequency Perspective for Image Deraining**
+
+* Paper: [https://arxiv.org/abs/2404.09476](https://arxiv.org/abs/2404.09476)
+* Tags: Mamba, Frequency Domain, Deraining
+
+**OKNet: Omni-Knowledge Network for All-In-One Image Restoration**
+
+* Paper: [https://arxiv.org/abs/2408.02818](https://arxiv.org/abs/2408.02818)
+* Tags: All-in-One, Knowledge Distillation
+
+Image Enhancement
+-----------------
+
+### Low-Light Image Enhancement
+
+**NeRCo: Normalizing Implicit Representational Coherence for Unsupervised Low-light Image Enhancement**
+
+* Paper: [https://arxiv.org/abs/2310.03031](https://arxiv.org/abs/2310.03031)
+* Code: [https://github.com/wenci0024/NeRCo](https://github.com/wenci0024/NeRCo)
+* Tags: Unsupervised, Low-Light, Implicit Representation
+
+**RCTNet: Real-time Color Transfer Between Images**
+
+* Paper: [https://arxiv.org/abs/2407.11721](https://arxiv.org/abs/2407.11721)
+* Tags: Color Transfer, Real-time
+
+Frame Interpolation
+-------------------
+
+**Generalizable Implicit Neural Representation for Ultra-High-Definition Frame Interpolation**
+
+* Paper: [https://arxiv.org/abs/2407.13827](https://arxiv.org/abs/2407.13827)
+* Tags: Frame Interpolation, Implicit Neural Representation, Ultra-HD
+
+Image Generation/Synthesis
+--------------------------
+
+### Text-to-Image / Diffusion
+
+**SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis**
+
+* Paper: [https://arxiv.org/abs/2307.01952](https://arxiv.org/abs/2307.01952)
+* Code: [https://github.com/Stability-AI/generative-models](https://github.com/Stability-AI/generative-models)
+* Tags: Latent Diffusion, High-Resolution
+
+**Scaling Rectified Flow Transformers for High-Resolution Image Synthesis (Stable Diffusion 3)**
+
+* Paper: [https://arxiv.org/abs/2403.03206](https://arxiv.org/abs/2403.03206)
+* Tags: Rectified Flow, High-Resolution, Diffusion Transformer
+
+**CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer**
+
+* Paper: [https://arxiv.org/abs/2408.06072](https://arxiv.org/abs/2408.06072)
+* Code: [https://github.com/THUDM/CogVideo](https://github.com/THUDM/CogVideo)
+* Tags: Text-to-Video, Diffusion Transformer
+
+Image Quality Assessment
+------------------------
+
+**Compare2Score: In-Context Learning Makes LLMs Strong Zero-Shot Image Quality Evaluator**
+
+* Paper: [https://arxiv.org/abs/2401.16462](https://arxiv.org/abs/2401.16462)
+* Tags: IQA, LLM, Zero-Shot
+
+**TOPIQ: A Top-down Perspective from Semantics to Distortions for Image Quality Assessment**
+
+* Paper: [https://arxiv.org/abs/2308.03060](https://arxiv.org/abs/2308.03060)
+* Code: [https://github.com/chaofengc/IQA-PyTorch](https://github.com/chaofengc/IQA-PyTorch)
+* Tags: IQA, Top-down, Semantics
+
+---
+
+NeurIPS2023-Low-Level-Vision
+=============================
+
+Image Restoration
+-----------------
+
+**DiffIR: Efficient Diffusion Model for Image Restoration**
+
+* Paper: [https://arxiv.org/abs/2303.09472](https://arxiv.org/abs/2303.09472)
+* Code: [https://github.com/Zj-BinXia/DiffIR](https://github.com/Zj-BinXia/DiffIR)
+* Tags: Diffusion, Image Restoration
+
+**Improving Image Restoration through Removing Degradations in Textual Representations**
+
+* Paper: [https://arxiv.org/abs/2312.17334](https://arxiv.org/abs/2312.17334)
+* Tags: Text-Guided, All-in-One Restoration
+
+### Super Resolution
+
+**ResShift: Efficient Diffusion Model for Image Super-resolution by Residual Shifting**
+
+* Paper: [https://arxiv.org/abs/2307.12348](https://arxiv.org/abs/2307.12348)
+* Code: [https://github.com/zsyOAOA/ResShift](https://github.com/zsyOAOA/ResShift)
+* Tags: Diffusion SR, Residual Shift, Efficient
+
+**Iterative Token Evaluation and Refinement for Real-World Super-Resolution**
+
+* Paper: [https://arxiv.org/abs/2312.05616](https://arxiv.org/abs/2312.05616)
+* Code: [https://github.com/chaofengc/ITER](https://github.com/chaofengc/ITER)
+* Tags: Real-World SR, Token Refinement
+
+Image Enhancement
+-----------------
+
+### Low-Light Image Enhancement
+
+**Implicit Neural Representation for Cooperative Low-light Image Enhancement**
+
+* Paper: [https://arxiv.org/abs/2303.11722](https://arxiv.org/abs/2303.11722)
+* Tags: Implicit Neural Representation, Low-Light
+
+**Fourier-based Augmentation with Applications to Domain Generalization**
+
+* Paper: [https://arxiv.org/abs/2309.09145](https://arxiv.org/abs/2309.09145)
+* Tags: Fourier, Domain Generalization, Augmentation
+
+Image Generation/Synthesis
+--------------------------
+
+### Diffusion Models
+
+**Consistency Models**
+
+* Paper: [https://arxiv.org/abs/2303.01469](https://arxiv.org/abs/2303.01469)
+* Code: [https://github.com/openai/consistency_models](https://github.com/openai/consistency_models)
+* Tags: Consistency, Fast Sampling, Score Matching
+
+**Diffusion Model for Dense Prediction**
+
+* Paper: [https://arxiv.org/abs/2303.04309](https://arxiv.org/abs/2303.04309)
+* Tags: Dense Prediction, Diffusion
+
+**Imagic: Text-Based Real Image Editing with Diffusion Models**
+
+* Paper: [https://arxiv.org/abs/2210.09276](https://arxiv.org/abs/2210.09276)
+* Tags: Image Editing, Diffusion
+
+**Score Identity Distillation: Exponentially Fast Distillation of Pretrained Diffusion Models for One-Step Generation**
+
+* Paper: [https://arxiv.org/abs/2404.04057](https://arxiv.org/abs/2404.04057)
+* Code: [https://github.com/mingyuanzhou/SiD](https://github.com/mingyuanzhou/SiD)
+* Tags: Distillation, One-Step, Diffusion
+
+Image Quality Assessment
+------------------------
+
+**UNIQUE: Uncertainty-aware blind image quality assessment in the laboratory and wild**
+
+* Paper: [https://arxiv.org/abs/2108.05797](https://arxiv.org/abs/2108.05797)
+* Code: [https://github.com/zwx8981/UNIQUE](https://github.com/zwx8981/UNIQUE)
+* Tags: IQA, Uncertainty, Blind
+
+---
+
 Reference
 ========
 
@@ -3704,6 +4277,9 @@ Reference
 
 [GitHub – DarrenPan/Awesome-CVPR2023-Low-Level-Vision: A Collection of Papers and Codes in CVPR2023/2022 about low level vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/DarrenPan/Awesome-CVPR2023-Low-Level-Vision "GitHub - DarrenPan/Awesome-CVPR2023-Low-Level-Vision: A Collection of Papers and Codes in CVPR2023/2022 about low level vision")
 
+*   [Awesome-CVPR2024-Low-Level-Vision](https://github.com/DarrenPan/Awesome-CVPR2024-Low-Level-Vision)
+*   [Awesome-ICCV2023-Low-Level-Vision](https://github.com/DarrenPan/Awesome-ICCV2023-Low-Level-Vision)
+*   [Awesome-CVPR2023-Low-Level-Vision](https://github.com/DarrenPan/Awesome-CVPR2023-Low-Level-Vision)
 *   [Awesome-CVPR2022-Low-Level-Vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/DarrenPan/Awesome-CVPR2023-Low-Level-Vision/blob/main/CVPR2022-Low-Level-Vision.md "Awesome-CVPR2022-Low-Level-Vision")
 *   [Awesome-ECCV2022-Low-Level-Vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/DarrenPan/Awesome-ECCV2022-Low-Level-Vision "Awesome-ECCV2022-Low-Level-Vision")
 *   [Awesome-AAAI2022-Low-Level-Vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/DarrenPan/Awesome-AAAI2022-Low-Level-Vision "Awesome-AAAI2022-Low-Level-Vision")
@@ -3711,6 +4287,8 @@ Reference
 *   [Awesome-ICCV2021-Low-Level-Vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/Kobaayyy/Awesome-ICCV2021-Low-Level-Vision "Awesome-ICCV2021-Low-Level-Vision")
 *   [Awesome-CVPR2021/CVPR2020-Low-Level-Vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/Kobaayyy/Awesome-CVPR2021-CVPR2020-Low-Level-Vision "Awesome-CVPR2021/CVPR2020-Low-Level-Vision")
 *   [Awesome-ECCV2020-Low-Level-Vision](https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://github.com/Kobaayyy/Awesome-ECCV2020-Low-Level-Vision "Awesome-ECCV2020-Low-Level-Vision")
+*   [IQA-PyTorch: A comprehensive toolbox for image quality assessment](https://github.com/chaofengc/IQA-PyTorch)
+*   [BasicSR: Open Source Image and Video Restoration Toolbox](https://github.com/XPixelGroup/BasicSR)
 
 *   https://aitechtogether.com/python/107134.html
 
