@@ -23,16 +23,20 @@
 
 ## Table of Contents
 
-| Conference | Year | Jump To |
-|---|---|---|
-| CVPR | 2024 | [→ CVPR 2024](#cvpr2024-low-level-vision) |
-| ICCV | 2023 | [→ ICCV 2023](#iccv2023-low-level-vision) |
-| CVPR | 2023 | [→ CVPR 2023](#cvpr2023-low-level-vision) |
-| CVPR | 2022 | [→ CVPR 2022](#cvpr2022-low-level-vision) |
-| ECCV | 2022 | [→ ECCV 2022](#eccv2022-low-level-vision) |
-| AAAI | 2022 | [→ AAAI 2022](#aaai2022-low-level-vision) |
-| ECCV | 2024 | [→ ECCV 2024](#eccv2024-low-level-vision) |
-| NeurIPS | 2023 | [→ NeurIPS 2023](#neurips2023-low-level-vision) |
+> **Legend:** ✅ = Covered &nbsp;|&nbsp; SR = Super-Resolution &nbsp;|&nbsp; DN = Denoising &nbsp;|&nbsp; DB = Deblurring &nbsp;|&nbsp; DR = Deraining &nbsp;|&nbsp; DH = Dehazing &nbsp;|&nbsp; LL = Low-Light &nbsp;|&nbsp; VR = Video Restoration &nbsp;|&nbsp; FI = Frame Interpolation &nbsp;|&nbsp; Gen = Generation/Editing &nbsp;|&nbsp; IQA = Image Quality Assessment
+
+| 📋 Conference | 📅 Year | 📄 Papers | 🔍 SR | 🔇 DN | 💫 DB | 🌧️ DR | 🌫️ DH | 🌙 LL | 🎬 VR | 🎞️ FI | 🎨 Gen | 📊 IQA | ⚙️ Dominant Methods | 🔗 Link |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|:---:|
+| **CVPR** | **2024** | ~21 | ✅ | ✅ | ✅ | | | ✅ | ✅ | | ✅ | ✅ | Diffusion · Transformer · VLM | [↗ Jump](#cvpr2024-low-level-vision) |
+| **ICCV** | **2023** | ~24 | ✅ | ✅ | ✅ | | ✅ | ✅ | ✅ | | ✅ | ✅ | Transformer · Diffusion · Retinex | [↗ Jump](#iccv2023-low-level-vision) |
+| **ECCV** | **2024** | ~19 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | | ✅ | ✅ | ✅ | Diffusion · Mamba · Transformer | [↗ Jump](#eccv2024-low-level-vision) |
+| **NeurIPS** | **2023** | ~11 | ✅ | | | | | ✅ | | | ✅ | ✅ | Diffusion · Consistency Models | [↗ Jump](#neurips2023-low-level-vision) |
+| **CVPR** | **2023** | ~110 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Transformer · Diffusion · GAN | [↗ Jump](#cvpr2023-low-level-vision) |
+| **CVPR** | **2022** | ~259 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Transformer · GAN · CNN | [↗ Jump](#cvpr2022-low-level-vision) |
+| **ECCV** | **2022** | ~256 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Transformer · GAN · Flow | [↗ Jump](#eccv2022-low-level-vision) |
+| **AAAI** | **2022** | ~39 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | | | ✅ | ✅ | CNN · Transformer | [↗ Jump](#aaai2022-low-level-vision) |
+
+> **Total papers indexed: ~739+** across 8 conference tracks (2022–2024)
 
 ---
 
