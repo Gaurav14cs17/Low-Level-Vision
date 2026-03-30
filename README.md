@@ -191,7 +191,7 @@ Image Restoration
 
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
-| 1 | [**DGSolver: Diffusion Generalist Solver with Universal Posterior Sampling for Image Restoration**](https://openreview.net/forum?id=ghhKZ0NaQN) | — | `Diffusion, High-Order Solver, Universal Posterior Sampling` |
+| 1 | [**DGSolver: Diffusion Generalist Solver with Universal Posterior Sampling for Image Restoration**](https://arxiv.org/abs/2504.21487) | [💻 Code](https://github.com/MiliLab/DGSolver) | `Diffusion, High-Order Solver, Universal Posterior Sampling` |
 | 2 | [**A Minimalistic Unified Framework for Incremental Learning across Image Restoration Tasks**](https://neurips.cc/virtual/2025/poster/118487) | — | `Incremental Learning, Unified Restoration, Meta-Convolution` |
 
 Deblurring
@@ -206,7 +206,7 @@ Deblurring
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
 | 1 | [**Text-Aware Real-World Image Super-Resolution via Diffusion Model with Joint Segmentation Decoders**](https://neurips.cc/virtual/2025/poster/115913) | — | `Real-World SR, Diffusion, Text-Aware, Segmentation` |
-| 2 | [**D³SR: Unleashing the Power of One-Step Diffusion for Image Super-Resolution via a Large-Scale Diffusion Discriminator**](https://openreview.net/forum?id=0M1gi4P4ka) | — | `One-Step Diffusion, SR, Diffusion Discriminator` |
+| 2 | [**D³SR: Unleashing the Power of One-Step Diffusion for Image Super-Resolution via a Large-Scale Diffusion Discriminator**](https://arxiv.org/abs/2410.04224) | [💻 Code](https://github.com/JianzeLi-114/D3SR) | `One-Step Diffusion, SR, Diffusion Discriminator` |
 
 ---
 
@@ -434,7 +434,7 @@ Image Restoration – Image Restoration
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
 | 1 | [**Raw Image Reconstruction with Learned Compact Metadata**](https://arxiv.org/abs/2302.12995) | [💻 Code](https://github.com/wyf0912/R2LCM) | — |
-| 2 | [**High-resolution image reconstruction with latent diffusion models from human brain activity**](https://www.biorxiv.org/content/10.1101/2022.11.18.517004v2) | [💻 Code](https://github.com/yu-takagi/StableDiffusionReconstruction) | — |
+| 2 | [**High-resolution image reconstruction with latent diffusion models from human brain activity**](https://openaccess.thecvf.com/content/CVPR2023/html/Takagi_High-Resolution_Image_Reconstruction_With_Latent_Diffusion_Models_From_Human_Brain_CVPR_2023_paper.html) | [💻 Code](https://github.com/yu-takagi/StableDiffusionReconstruction) | — |
 | 3 | [**DR2: Diffusion-based Robust Degradation Remover for Blind Face Restoration**](https://arxiv.org/abs/2303.06885) | — | — |
 
 ### Burst Restoration
