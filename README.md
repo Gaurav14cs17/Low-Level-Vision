@@ -154,7 +154,7 @@ Image Restoration
 | 1 | [**UniRes: Universal Image Restoration for Complex Degradations**](https://openaccess.thecvf.com/content/ICCV2025/html/Zhou_UniRes_Universal_Image_Restoration_for_Complex_Degradations_ICCV_2025_paper.html) | — | `Diffusion, Universal Restoration, Mixed Degradations` |
 | 2 | [**LD-RPS: Zero-Shot Unified Image Restoration via Latent Diffusion Recurrent Posterior Sampling**](https://openaccess.thecvf.com/content/ICCV2025/html/Li_LD-RPS_Zero-Shot_Unified_Image_Restoration_via_Latent_Diffusion_Recurrent_Posterior_ICCV_2025_paper.html) | — | `Zero-Shot, Diffusion, Recurrent Posterior Sampling` |
 | 3 | [**Frequency-Guided Posterior Sampling for Diffusion-Based Image Restoration**](https://openaccess.thecvf.com/content/ICCV2025/html/Thaker_Frequency-Guided_Posterior_Sampling_for_Diffusion-Based_Image_Restoration_ICCV_2025_paper.html) | — | `Diffusion, Frequency Domain, Deblurring, Dehazing` |
-| 4 | [**Decouple to Reconstruct: High Quality UHD Restoration**](https://openaccess.thecvf.com/content/ICCV2025/html) | — | `UHD, All-in-One, Feature Disentanglement` |
+| 4 | [**Decouple to Reconstruct: High Quality UHD Restoration**](https://arxiv.org/abs/2409.16296) | — | `UHD, All-in-One, Feature Disentanglement` |
 
 ### Super Resolution
 
@@ -296,7 +296,7 @@ Image Generation/Synthesis
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
 | 1 | [**DistriFusion: Distributed Parallel Inference for High-Resolution Diffusion Models**](https://arxiv.org/abs/2402.19481) | [💻 Code](https://github.com/mit-han-lab/distrifuser) | `Diffusion, Efficient Inference` |
-| 2 | [**InstantID: Zero-shot Identity-Preserving Generation in Seconds**](https://arxiv.org/abs/2401.07519) | [💻 Code](https://github.com/InstantX-Team/InstantID) | `Identity-Preserving, Diffusion` |
+| 2 | [**InstantID: Zero-shot Identity-Preserving Generation in Seconds**](https://arxiv.org/abs/2401.07519) | [💻 Code](https://github.com/instantX-research/InstantID) | `Identity-Preserving, Diffusion` |
 | 3 | [**InitNo: Boosting Text-to-Image Diffusion Models via Initial Noise Optimization**](https://arxiv.org/abs/2404.04650) | [💻 Code](https://github.com/xiefan-guo/initno) | `Diffusion, Initial Noise` |
 | 4 | [**Instruct-Imagen: Image Generation with Multi-modal Instruction**](https://arxiv.org/abs/2401.01952) | — | `Text-to-Image, Multi-modal Instruction` |
 
@@ -347,14 +347,14 @@ Deblurring
 
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
-| 1 | [**Multi-scale Residual Low-Pass Filter Network for Image Deblurring**](https://openaccess.thecvf.com/content/ICCV2023/papers/Dong_Multi-scale_Residual_Low-Pass_Filter_Network_for_Image_Deblurring_ICCV_2023_paper.pdf) | — | `Deblurring, Multi-scale` |
+| 1 | [**Multi-scale Residual Low-Pass Filter Network for Image Deblurring**](https://openaccess.thecvf.com/content/ICCV2023/html/Dong_Multi-Scale_Residual_Low-Pass_Filter_Network_for_Image_Deblurring_ICCV_2023_paper.html) | — | `Deblurring, Multi-scale` |
 
 Dehazing
 --------
 
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
-| 1 | [**MB-TaylorFormer: Multi-Branch Efficient Transformer Expanded by Taylor Formula for Image Dehazing**](https://arxiv.org/abs/2308.14036) | [💻 Code](https://github.com/FVL2020/MB-TaylorFormer) | `Transformer, Dehazing` |
+| 1 | [**MB-TaylorFormer: Multi-Branch Efficient Transformer Expanded by Taylor Formula for Image Dehazing**](https://arxiv.org/abs/2308.14036) | — | `Transformer, Dehazing` |
 | 2 | [**Frequency-Oriented Efficient Transformer for All-in-One Weather-Degraded Image Restoration**](https://arxiv.org/abs/2308.03995) | — | `All-in-One, Weather Degradation` |
 
 Image Enhancement
@@ -424,7 +424,7 @@ Image Restoration – Image Restoration
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
 | 1 | [**Efficient and Explicit Modeling of Image Hierarchies for Image Restoration**](https://arxiv.org/abs/2303.00748) | [💻 Code](https://github.com/ofsoundof/GRL-Image-Restoration) | `Transformer` |
-| 2 | [**Learning Distortion Invariant Representation for Image Restoration from A Causality Perspective**](https://arxiv.org/abs/2303.06859) | [💻 Code](https://github.com/lixinustc/Casual-IRDIL) | — |
+| 2 | [**Learning Distortion Invariant Representation for Image Restoration from A Causality Perspective**](https://arxiv.org/abs/2303.06859) | — | — |
 | 3 | [**Generative Diffusion Prior for Unified Image Restoration and Enhancement**](https://arxiv.org/abs/2304.01247) | [💻 Code](https://github.com/Fayeben/GenerativeDiffusionPrior) | — |
 | 4 | [**Contrastive Semi-supervised Learning for Underwater Image Restoration via Reliable Bank**](https://arxiv.org/abs/2303.09101) | [💻 Code](https://github.com/Huang-ShiRui/Semi-UIR) | `Underwater Image Restoration` |
 | 5 | [**Nighttime Smartphone Reflective Flare Removal Using Optical Center Symmetry Prior**](https://arxiv.org/abs/2303.15046) | [💻 Code](https://github.com/ykdai/BracketFlare) | `Reflective Flare Removal` |
@@ -462,7 +462,7 @@ Super Resolution – super resolution
 | 4 | [**OPE-SR: Orthogonal Position Encoding for Designing a Parameter-free Upsampling Module in Arbitrary-scale Image Super-Resolution**](https://arxiv.org/abs/2303.01091) | — | — |
 | 5 | [**Local Implicit Normalizing Flow for Arbitrary-Scale Image Super-Resolution**](https://arxiv.org/abs/2303.05156) | — | — |
 | 6 | [**Super-Resolution Neural Operator**](https://arxiv.org/abs/2303.02584) | [💻 Code](https://github.com/2y7c3/Super-Resolution-Neural-Operator) | — |
-| 7 | [**Human Guided Ground-truth Generation for Realistic Image Super-resolution**](https://arxiv.org/abs/2303.13069) | [💻 Code](https://github.com/ChrisDud0257/PosNegGT) | — |
+| 7 | [**Human Guided Ground-truth Generation for Realistic Image Super-resolution**](https://arxiv.org/abs/2303.13069) | — | — |
 | 8 | [**Implicit Diffusion Models for Continuous Super-Resolution**](https://arxiv.org/abs/2303.16491) | [💻 Code](https://github.com/Ree1s/IDM) | — |
 | 9 | **Zero-Shot Dual-Lens Super-Resolution** | [💻 Code](https://github.com/XrKang/ZeDuSR) | — |
 | 10 | [**Learning Generative Structure Prior for Blind Text Image Super-resolution**](https://arxiv.org/abs/2303.14726) | [💻 Code](https://github.com/csxmli2016/MARCONet) | `Text SR` |
@@ -940,7 +940,7 @@ Image Completion/Inpainting – image restoration
 | 1 | [**Towards An End-to-End Framework for Flow-Guided Video Inpainting**](https://arxiv.org/abs/2204.02663) | [💻 Code](https://github.com/MCG-NKU/E2FGVI) | — |
 | 2 | [**The DEVIL Is in the Details: A Diagnostic Evaluation Benchmark for Video Inpainting**](https://openaccess.thecvf.com/content/CVPR2022/html/Szeto_The_DEVIL_Is_in_the_Details_A_Diagnostic_Evaluation_Benchmark_CVPR_2022_paper.html) | [💻 Code](https://github.com/MichiganCOG/devil) | — |
 | 3 | [**DLFormer: Discrete Latent Transformer for Video Inpainting**](https://openaccess.thecvf.com/content/CVPR2022/html/Ren_DLFormer_Discrete_Latent_Transformer_for_Video_Inpainting_CVPR_2022_paper.html) | — | — |
-| 4 | [**Inertia-Guided Flow Completion and Style Fusion for Video Inpainting**](https://openaccess.thecvf.com/content/CVPR2022/html/Zhang_Inertia-Guided_Flow_Completion_and_Style_Fusion_for_Video_Inpainting_CVPR_2022_paper.htmll) | — | — |
+| 4 | [**Inertia-Guided Flow Completion and Style Fusion for Video Inpainting**](https://openaccess.thecvf.com/content/CVPR2022/html/Zhang_Inertia-Guided_Flow_Completion_and_Style_Fusion_for_Video_Inpainting_CVPR_2022_paper.html) | — | — |
 
 Image Matting – image matting
 -----------------------------
@@ -1402,7 +1402,7 @@ Image Fusion
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
 | 1 | [**FusionVAE: A Deep Hierarchical Variational Autoencoder for RGB Image Fusion**](https://arxiv.org/abs/2209.11277) | — | — |
-| 2 | [**Recurrent Correction Network for Fast and Efficient Multi-modality Image Fusion**](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3864_ECCV_2022_paper.php) | [💻 Code](https://github.com/MisakiCoca/ReCoNet) | — |
+| 2 | [**Recurrent Correction Network for Fast and Efficient Multi-modality Image Fusion**](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3864_ECCV_2022_paper.php) | — | — |
 | 3 | [**Neural Image Representations for Multi-Image Fusion and Layer Separation**](https://arxiv.org/abs/2108.01199) | [💻 Code](https://shnnam.github.io/research/nir/) | — |
 | 4 | [**Fusion from Decomposition: A Self-Supervised Decomposition Approach for Image Fusion**](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/4260_ECCV_2022_paper.php) | [💻 Code](https://github.com/erfect2020/DecompositionForFusion) | — |
 
@@ -1485,7 +1485,7 @@ Image Colorization – image colorization
 |:---:|:---|:---:|:---|
 | 1 | [**Eliminating Gradient Conflict in Reference-based Line-art Colorization**](https://arxiv.org/abs/2207.06095) | [💻 Code](https://github.com/kunkun0w0/SGA) | — |
 | 2 | [**Bridging the Domain Gap towards Generalization in Automatic Colorization**](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/7304_ECCV_2022_paper.php) | [💻 Code](https://github.com/Lhyejin/DG-Colorization) | — |
-| 3 | [**CT2: Colorization Transformer via Color Tokens**](https://ci.idm.pku.edu.cn/Weng_ECCV22b.pdf) | [💻 Code](https://github.com/shuchenweng/CT2) | — |
+| 3 | [**CT2: Colorization Transformer via Color Tokens**](https://arxiv.org/abs/2206.02980) | [💻 Code](https://github.com/shuchenweng/CT2) | — |
 | 4 | [**PalGAN: Image Colorization with Palette Generative Adversarial Networks**](https://arxiv.org/abs/2210.11204) | [💻 Code](https://github.com/shepnerd/PalGAN) | — |
 | 5 | [**BigColor: Colorization using a Generative Color Prior for Natural Images**](https://kimgeonung.github.io/assets/bigcolor/bigcolor_main.pdf) | [💻 Code](https://github.com/KIMGEONUNG/BigColor) | — |
 | 6 | [**Semantic-Sparse Colorization Network for Deep Exemplar-Based Colorization**](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/820_ECCV_2022_paper.php) | — | — |
@@ -1634,7 +1634,7 @@ Image Generation/Synthesis / Image-to-Image Translation – Image Generation/Syn
 | 6 | [**StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pretrained StyleGAN**](https://arxiv.org/abs/2203.04036) | [💻 Code](https://github.com/FeiiYin/StyleHEAT) | — |
 | 7 | [**WaveGAN: An Frequency-aware GAN for High-Fidelity Few-shot Image Generation**](https://arxiv.org/abs/2207.07288) | [💻 Code](https://github.com/kobeshegu/ECCV2022_WaveGAN) | — |
 | 8 | [**FakeCLR: Exploring Contrastive Learning for Solving Latent Discontinuity in Data-Efficient GANs**](https://arxiv.org/abs/2207.08630) | [💻 Code](https://github.com/iceli1007/FakeCLR) | — |
-| 9 | [**Auto-regressive Image Synthesis with Integrated Quantization**](https://arxiv.org/abs/2207.10776) | [💻 Code](https://github.com/fnzhan/IQ-VAE) | — |
+| 9 | [**Auto-regressive Image Synthesis with Integrated Quantization**](https://arxiv.org/abs/2207.10776) | — | — |
 | 10 | [**PixelFolder: An Efficient Progressive Pixel Synthesis Network for Image Generation**](https://arxiv.org/abs/2204.00833) | [💻 Code](https://github.com/BlingHe/PixelFolder) | — |
 | 11 | [**DeltaGAN: Towards Diverse Few-shot Image Generation with Sample-Specific Delta**](https://arxiv.org/abs/2207.10271) | [💻 Code](https://github.com/bcmi/DeltaGAN-Few-Shot-Image-Generation) | — |
 | 12 | [**Generator Knows What Discriminator Should Learn in Unconditional GANs**](https://arxiv.org/abs/2207.13320) | [💻 Code](https://github.com/naver-ai/GGDR) | — |
@@ -1677,7 +1677,7 @@ Others
 
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
-| 1 | [**Learning Local Implicit Fourier Representation for Image Warping**](https://ipl.dgist.ac.kr/LTEW.pdf) | [💻 Code](https://github.com/jaewon-lee-b/ltew) | `Image Warping` |
+| 1 | [**Learning Local Implicit Fourier Representation for Image Warping**](https://arxiv.org/abs/2209.01831) | [💻 Code](https://github.com/jaewon-lee-b/ltew) | `Image Warping` |
 | 2 | [**Dress Code: High-Resolution Multi-Category Virtual Try-On**](https://arxiv.org/abs/2204.08532) | [💻 Code](https://github.com/aimagelab/dress-code) | `Virtual Try-On` |
 | 3 | [**High-Resolution Virtual Try-On with Misalignment and Occlusion-Handled Conditions**](https://arxiv.org/abs/2206.14180) | [💻 Code](https://github.com/sangyun884/HR-VITON) | `Virtual Try-On` |
 | 4 | [**Single Stage Virtual Try-on via Deformable Attention Flows**](https://arxiv.org/abs/2207.09161) | — | `Virtual Try-On` |
@@ -1913,7 +1913,7 @@ Image Enhancement
 
 | # | Paper | Code | Tags |
 |:---:|:---|:---:|:---|
-| 1 | [**NeRCo: Normalizing Implicit Representational Coherence for Unsupervised Low-light Image Enhancement**](https://arxiv.org/abs/2310.03031) | [💻 Code](https://github.com/wenci0024/NeRCo) | `Unsupervised, Low-Light, Implicit Representation` |
+| 1 | [**NeRCo: Normalizing Implicit Representational Coherence for Unsupervised Low-light Image Enhancement**](https://arxiv.org/abs/2310.03031) | — | `Unsupervised, Low-Light, Implicit Representation` |
 | 2 | [**RCTNet: Real-time Color Transfer Between Images**](https://arxiv.org/abs/2407.11721) | — | `Color Transfer, Real-time` |
 
 Frame Interpolation
